@@ -1,0 +1,4 @@
+Após baixar todos os arquivos do repositório, abra a solução que irá trabalhar e clique com o botão direito em cima da solução e clique em "Limpar Solução", 
+depois em "Compilar Solução" e está pronto para testar o projeto.
+
+Este erro está ocorrendo devido a solução guardar os arquivos da pasta bin em algum lugar dentro da memória dela!
