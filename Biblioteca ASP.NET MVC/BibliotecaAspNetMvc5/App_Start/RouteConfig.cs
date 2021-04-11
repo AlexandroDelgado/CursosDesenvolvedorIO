@@ -13,10 +13,28 @@ namespace BibliotecaAspNetMvc5
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // sempre colocar as rotas mais complexas por cima e testar muito bem para que não haja erro de navegação,
+            // já que o processamento das rotas seguem uma regra de cima para baixo.
+
+            routes.MapRoute(
+                name: "Institucional",
+                url: "Institucional/{controller}/{action}",
+                defaults: new { controller = "Teste", action = "IndexTeste" }
+            );
+
+            routes.MapRoute(
+                name: "Teste",
+                url: "Sistema/{controller}/{action}/{id}",
+                defaults: new { controller = "Teste", action = "IndexTeste", id = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+
+                //// só pode existir uma rota padrão por aplicação no modo mvc
+                //defaults: new { controller = "Teste", action = "IndexTeste", id = UrlParameter.Optional }
             );
         }
     }
