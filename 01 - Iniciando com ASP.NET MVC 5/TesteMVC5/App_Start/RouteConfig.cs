@@ -13,6 +13,9 @@ namespace TesteMVC5
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // lê as rotas criadas nos controlers e não gera conflito entre elas (melhor que usar o MapRoute)
+            routes.MapMvcAttributeRoutes();
+
             // Sempre colocar as rotas mais complexas por cima e testar muito bem para que não haja erro de navegação, já que o processamento das rotas seguem uma regra de cima para baixo.
 
             routes.MapRoute(

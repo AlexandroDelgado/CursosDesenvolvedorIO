@@ -8,18 +8,42 @@ namespace TesteMVC5.Controllers
 {
     public class HomeController : Controller
     {
+        // Toda url que tentar acessar a aplicação sem ter um controle, vai cair aqui!
+        [Route(template:"")]
         // Aceita qualquer tipo de ação
         public ActionResult Index()
         {
             return View();
         }
 
+        // cria uma rota que não gera conflitos
+        [Route(template:"Sobre-nos")]
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        // cria uma rota que não gera conflitos fazendo com que a mesma pareça ter um controler "Institucional"
+        [Route(template: "Institucional/Entre-em-contato")]
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        // cria uma rota que não gera conflitos, sem a necessidade de um controler no meio
+        [Route(template: "Content-result")]
         // Escreve o resultado na tela
         public ContentResult ContentResult()
         {
             return Content("Olá");
         }
 
+        // cria uma rota que não gera conflitos, simula um controler "Downloads" na rota do arquivo.
+        [Route(template: "Downloads/Meu-arquivo")]
         // Permite o download de arquivos
         public FileContentResult FileContentResult()
         {
@@ -61,20 +85,5 @@ namespace TesteMVC5.Controllers
             // redireciona para rotas mais simples
             return RedirectToAction("IndexTeste", controllerName:"Teste");
         }
-
-
-        //public ActionResult About()
-        //{
-        //    ViewBag.Message = "Your application description page.";
-
-        //    return View();
-        //}
-
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "Your contact page.";
-
-        //    return View();
-        //}
     }
 }
