@@ -8,11 +8,15 @@ namespace BibliotecaAspNetMvc5.Controllers
 {
     public class HomeController : Controller
     {
+        // Toda url que acessar a aplicação sem ter um controle, vai cair aqui!
+        [Route(template:"")]
         public ActionResult Index()
         {
             return View();
         }
 
+        // cria uma rota que na gera conflitos
+        [Route(template:"Sobre-nos")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -20,6 +24,8 @@ namespace BibliotecaAspNetMvc5.Controllers
             return View();
         }
 
+        // cria uma rota que não gera conflitos fazendo com que a mesma pareça ter um controler "Istitucional"
+        [Route(template:"Institucional/Entre-em-contato")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -27,15 +33,18 @@ namespace BibliotecaAspNetMvc5.Controllers
             return View();
         }
 
+        // cria uma rota que não gera confllitos, sem a necessidade de um controler no meio.
+        [Route(template:"Content-Result")]
         // VENDO ALGUNS CONTROLERS (Você pode usar um controle referência "ActionResult" ou forçar a nomenclatura do mesmo "RedirectResult", o que é mais indicado.)
         // rode a aplicação e coloque os controlers após o local/home/ContentResult para poder testar
-
         // Escreve o resultado na tela
         public ContentResult ContentResult()
         {
             return Content("Olá");
         }
 
+        // cria uma rota que não gera conflitos, simula um controler "Downloads" na rota do arquivo
+        [Route(template: "Downloads/Meu-arquivo")]
         // Permite o download de arquivos
         public FileContentResult FileContentResult()
         {
