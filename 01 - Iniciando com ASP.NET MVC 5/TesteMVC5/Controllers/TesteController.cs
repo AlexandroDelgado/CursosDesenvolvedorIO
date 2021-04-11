@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace TesteMVC5.Controllers
 {
     // seta uma rota testes para todos os controllers teste (não colocar o RoutePrefix na HomeController)
-    [RoutePrefix("Teste")]
+    [RoutePrefix("Testes")]
     public class TesteController : Controller
     {
         [Route]
