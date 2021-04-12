@@ -9,7 +9,7 @@ namespace TesteMVC5.Models
 {
     public class Aluno
     {
-        // DataAnnotations: são as validações dos dados que podem ser feitas pela view, Controllers e etc.
+        // DataAnnotations: são as validações dos dados que são feitas na models, através de um processo chamado: ModelBind.
 
         public int Id { get; set; }
 
