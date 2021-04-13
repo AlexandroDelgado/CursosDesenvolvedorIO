@@ -1,4 +1,8 @@
-﻿@model TesteMVC5.Models.Aluno
+﻿<!--
+    Model com M maiusculo representa a instância da model.
+    Model com m minusculo representa o mapeamento de que model vai ser utilizada na view.
+-->
+@model TesteMVC5.Models.Aluno
 
 <h2>Novo Aluno</h2>
 
@@ -20,6 +24,7 @@
     -->
 
     <div class="form-group">
+
         @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
@@ -50,11 +55,14 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Enviar" class="btn btn-default" />
-        </div>
-    </div>
+    <!--
+        Inclui uma PartialView(Include)
+        Caso queira enviar uma model dentro de uma partialView Html.Partial("_SubmissaoForm", Model), a model tem que ser passada na controller: return View(Aluno).
+        E a PartialView que estiver recebendo esta model, tem que ter declarado o modelo no topo de sua pagina exe: model TesteMVC5.Models.Aluno e a instância do modelo
+        não pode estar nulla, ela deve estar preenchida.
+        Passar models é muito comum no caso de alteração para o banco.
+    -->
+    @Html.Partial("_SubmissaoForm")
 </div>
 }
 <!-- Adiciona os JavaScripts -->
