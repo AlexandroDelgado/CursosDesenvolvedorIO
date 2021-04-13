@@ -13,15 +13,16 @@ namespace TesteMVC5.Models
 
         public int Id { get; set; }
 
-        [DisplayName("Nome Completo")]
+        [DisplayName("Nome Completo*")]
         [Required(ErrorMessage = "O campo {0} é requerido")]
         public string Nome { get; set; }
        
-        [DisplayName("E-mail")]
+        [DisplayName("E-mail*")]
         [Required(ErrorMessage = "O campo {0} é requerido")]
         [EmailAddress(ErrorMessage = "E-mail em formato inválido")]
         public string Email { get; set; }
        
+        [DisplayName("CPF*")]
         [Required(ErrorMessage = "O campo {0} é requerido")]
         public string CPF { get; set; }
         
