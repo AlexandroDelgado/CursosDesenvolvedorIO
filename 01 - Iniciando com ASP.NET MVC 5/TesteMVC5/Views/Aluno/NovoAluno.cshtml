@@ -57,6 +57,9 @@
 
     <!--
         Inclui uma PartialView(Include)
+        Por padrão uma Partial View deve ter o "_" na frente de seu nome e deve ser sempre colocada na pasta referente a pagina dela, porém caso você queira que seuja
+        uma Partial View global, coloque a mesma dentro da pasta "Shared".
+
         Caso queira enviar uma model dentro de uma partialView Html.Partial("_SubmissaoForm", Model), a model tem que ser passada na controller: return View(Aluno).
         E a PartialView que estiver recebendo esta model, tem que ter declarado o modelo no topo de sua pagina exe: model TesteMVC5.Models.Aluno e a instância do modelo
         não pode estar nulla, ela deve estar preenchida.
