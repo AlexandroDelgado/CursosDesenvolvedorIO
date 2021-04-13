@@ -10,37 +10,35 @@ namespace BibliotecaAspNetMvc5.Controllers
     // a classe está herdando um controller
     public class AlunoController : Controller
     {
-        // cria a rota para teste de navegação em url que simulara o recebimento de uma isntância "aluno" para o método "Novo".
-        [Route(template:"Novo-Aluno")]
-
-        // A actionResult está simulando a entrada de um novo aluno
-        // isto está sendo feito por não ter sido emprementado a view ainda.
-        public ActionResult Novo(Aluno aluno)
+        /*
+            [HttpGet] Declara o tipo do verbo. Quando retornarmos a view de forma vazia o correto é usar o GET e POST quando preenchido.
+            [Route(template: "Novo-Aluno")] Cria a rota para navegação em url.
+        */
+        [HttpGet]
+        [Route(template: "Novo-Aluno")]
+        // A ActionResult, está fazendo a parte de contrutor da classe
+        public ActionResult NovoAluno()
         {
-            // instância de um aluno
-            aluno = new Aluno
-            {
-                // popula as propriedades do aluno para teste
-                Id = 1,
-                Nome = "", // passe o nome vazio
-                CPF = "12345678912",
-                DataMatricula = DateTime.Now,
-                Email = "alexandrodelgado0hotmail.com", // troque a @ por 0
-                Ativo = true
-            };
-
-            // passa o objeto Modelo(aluno) para a actionResult index, que validára o novo aluno.
-            return RedirectToAction("Index", aluno);
+            // Instância a view com o valor em branco para um novo cadastro
+            return View();
         }
 
-        // essa action está sendo criada para a validação do objeto aluno
-        public ActionResult Index(Aluno aluno) 
+        [HttpPost]
+        [Route(template: "Novo-Aluno")]
+        // A ActionResult verifica se retorna o objeto aluno como verdadeiro ou falso para a View 
+        public ActionResult NovoAluno(Aluno aluno) 
         {
             // caso o modelo esteja correto, retorna o objeto aluno para a view informando que está correto.
-            if (!ModelState.IsValid) return View(aluno);
-
-            // devolve o objeto para a view aluno com os parâmetros de erro criados na model aluno.
-            return View(aluno);
+            if (!ModelState.IsValid) 
+            {
+                // Retorna a instância do objeto para a View como verdeiro
+                return View(aluno);
+            }
+            else
+            {
+                // retorna a instância do objeto para a view com falso
+                return View(aluno);
+            }
         }
     }
 }
