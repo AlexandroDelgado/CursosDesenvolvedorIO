@@ -10,38 +10,34 @@ namespace TesteMVC5.Controllers
     // a classe está herdadno um controller
     public class AlunoController : Controller
     {
+        // Declara o tipo de verbo. Quando retornarmos a view de forma vazia o correto é usar o Get
+        [HttpGet]
         // cria a rota para navegação em url que simulara o recebimento de uma instância "aluno" para o método "Novo".
-        [Route(template:"Novo-Aluno")]
+        [Route(template: "Novo-Aluno")]
 
-        // A ActionResult está simulando a entrada de um novo aluno
-        // isto está sendo feito por não ter sido emprementado a view ainda.
-        public ActionResult Novo(Aluno aluno)
+        public ActionResult NovoAluno()
         {
-            // simula a criação da instância de um aluno
-            aluno = new Aluno
+            return View();
+        }
+
+        // Declara o tipo de verbo. Quando retornarmos a view de forma preenchida, o correto é usar o Post
+        [HttpPost]
+        // cria a rota para navegação em url que simulara o recebimento de uma instância "aluno" para o método "Novo".
+        [Route(template: "Novo-Aluno")]
+        // Executa a actionResult para o objeto aluno
+        public ActionResult NovoAluno(Aluno aluno)
+        {
+            // Verifica o estado do aluno
+            if (!ModelState.IsValid)
             {
-                // popula os dados do aluno para teste
-                Id = 1,
-                Nome = "Eduardo", // passe o nome vazio
-                CPF = "12345678912",
-                DataMatricula = DateTime.Now,
-                Email = "edu@edu.com", // troque a @ por 2
-                Ativo = true
-            };
+                // Neste ponto colocariamos as nossas regras de negócio e salvariamos no banco.
 
-            // passa o objeto modelo(aluno) para a action Index.
-            return RedirectToAction("Index", aluno);
+                return View(aluno); // caso o aluno tenha sido preenchido corretamente, envia o objeto aluno com status de verdadeiro.
+            }
+            else
+            {
+                return View(aluno); // caso o aluno não tenha sido preenchido corretamente, retorna o aluno com status falso.
+            }
         }
-
-        // Essa action está sendo criada para validar a passagem do aluno
-        public ActionResult Index(Aluno aluno)
-        {
-            // caso o modelo esteja correto, retorna o objeto aluno para a view informando que está correto.
-            if (!ModelState.IsValid) return View(aluno);
-
-            // Devolve o objeto aluno com erro
-            return View(aluno);
-        }
-
     }
 }
