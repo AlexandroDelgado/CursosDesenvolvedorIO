@@ -8,6 +8,8 @@
 
 @using (Html.BeginForm())
 {
+    @* Envia um token da view para evitar ataques do tipo CSRF(Cross-site request forgery) entre outros. *@
+    @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
     <h4>Informe os dados do aluno:</h4>

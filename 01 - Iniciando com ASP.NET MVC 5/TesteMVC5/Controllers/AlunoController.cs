@@ -22,6 +22,8 @@ namespace TesteMVC5.Controllers
 
         // Declara o tipo de verbo. Quando retornarmos a view de forma preenchida, o correto é usar o Post
         [HttpPost]
+        // Valida o token recebido da view para evitar ataques do tipo CSRF(Cross-site request forgery) entre outros
+        [ValidateAntiForgeryToken]
         // cria a rota para navegação em url que simulara o recebimento de uma instância "aluno" para o método "Novo".
         [Route(template: "Novo-Aluno")]
         // Executa a actionResult para o objeto aluno
