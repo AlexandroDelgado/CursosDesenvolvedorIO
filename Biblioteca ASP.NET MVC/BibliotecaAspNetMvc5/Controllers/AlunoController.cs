@@ -23,7 +23,10 @@ namespace BibliotecaAspNetMvc5.Controllers
             return View();
         }
 
+        // Valida o token recebido da view para evitar ataques do tipo CSRF(Cross-site request forgery) entre outros.
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [Route(template: "Novo-Aluno")]
         // A ActionResult verifica se retorna o objeto aluno como verdadeiro ou falso para a View 
         public ActionResult NovoAluno(Aluno aluno) 

@@ -6,80 +6,83 @@
 
 <h2>Novo Aluno</h2>
 
-<!-- Cria um formulário através do Razor -->
+@* Cria um formulário através do Razor *@
 @using (Html.BeginForm())
 {
-<div class="form-horizontal">
-    <h4>Informe os dados do aluno:</h4>
-    <hr />
-    @*
-        Html.ValidationSummary(false, "Todos os campos com * são de preenchimento obrigatório!", new { class = "text-danger" })
+    @* Envia um token da view para evitar ataques do tipo CSRF(Cross-site request forgery) entre outros. *@
+    @Html.AntiForgeryToken()
 
-        O primeiro parâmetro aceita um boleano onde true não exibe os retornos da validação no topo da tela enquando o false exibe.
+    <div class="form-horizontal">
+        <h4>Informe os dados do aluno:</h4>
+        <hr />
+        @*
+            Html.ValidationSummary(false, "Todos os campos com * são de preenchimento obrigatório!", new { class = "text-danger" })
 
-        O segundo parâmetro "", serve para passar uma mensagem de texto para o usuário.
-    *@
-    @Html.ValidationSummary(false, "Todos os campos com * são de preenchimento obrigatório!", new { @class = "text-danger" })
+            O primeiro parâmetro aceita um boleano onde true não exibe os retornos da validação no topo da tela enquando o false exibe.
 
-    <div class="form-group">
-        @* informa a label do campo na tela *@
-        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @* cria o campo baseado no modelo *@
-            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-            @* valida o contéudo do campo baseado com o modelo *@
-            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            O segundo parâmetro "", serve para passar uma mensagem de texto para o usuário.
+        *@
+        @Html.ValidationSummary(false, "Todos os campos com * são de preenchimento obrigatório!", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @* informa a label do campo na tela *@
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @* cria o campo baseado no modelo *@
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @* valida o contéudo do campo baseado com o modelo *@
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @* informa a label do campo na tela *@
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @* cria o campo baseado no modelo *@
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-            @* valida o contéudo do campo baseado com o modelo *@
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @* informa a label do campo na tela *@
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @* cria o campo baseado no modelo *@
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @* valida o contéudo do campo baseado com o modelo *@
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @* informa a label do campo na tela *@
-        @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @* cria o campo baseado no modelo *@
-            @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
-            @* valida o contéudo do campo baseado com o modelo *@
-            @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @* informa a label do campo na tela *@
+            @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @* cria o campo baseado no modelo *@
+                @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
+                @* valida o contéudo do campo baseado com o modelo *@
+                @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @* informa a label do campo na tela *@
-        @Html.LabelFor(model => model.Ativo, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @* cria o campo baseado no modelo *@
-            @Html.CheckBoxFor(model => model.Ativo, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="form-group">
+            @* informa a label do campo na tela *@
+            @Html.LabelFor(model => model.Ativo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @* cria o campo baseado no modelo *@
+                @Html.CheckBoxFor(model => model.Ativo, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
         </div>
+
+        @*
+            Html.Partial("_SubmissaoForm") Inclui uma Partial View que está disponível como global na pasta View/Shared.
+
+            Por padrão uma Partial View deve ter o "_" na frente de seu nome e deve ser colocada na pasta referente a ela, a
+                não ser que a mesma seja uma Partial Viem padrão para todo o sistema.
+
+            Html.Partial("_SubmissaoForm", Model) também lhe dá a opção de enviar um modelo da sua classe para a partial view,
+                porém o modelo também deve ser passado pela pagina controller ex: return View(Aluno), sendo que a instância,
+                do modelo não pode estar vazia, além de que a partial view que estará recebendo este objeto deve ter a sua declaração
+                informada no começo da pagina exe: model TesteMVC5.Models.Aluno
+        *@
+        @Html.Partial("_SubmissaoForm")
     </div>
-
-    @*
-        Html.Partial("_SubmissaoForm") Inclui uma Partial View que está disponível como global na pasta View/Shared.
-
-        Por padrão uma Partial View deve ter o "_" na frente de seu nome e deve ser colocada na pasta referente a ela, a
-            não ser que a mesma seja uma Partial Viem padrão para todo o sistema.
-
-        Html.Partial("_SubmissaoForm", Model) também lhe dá a opção de enviar um modelo da sua classe para a partial view,
-            porém o modelo também deve ser passado pela pagina controller ex: return View(Aluno), sendo que a instância,
-            do modelo não pode estar vazia, além de que a partial view que estará recebendo este objeto deve ter a sua declaração
-            informada no começo da pagina exe: model TesteMVC5.Models.Aluno
-    *@
-    @Html.Partial("_SubmissaoForm")
-</div>
 }
 <!-- Adiciona os JavaScripts -->
 @section Scripts
 {
-    @* gera os scripts para a validação no browser do usuário com base na validação model*@ 
+    @* gera os scripts para a validação no browser do usuário com base na validação model*@
     @Scripts.Render("~/bundles/jqueryval")
 }
