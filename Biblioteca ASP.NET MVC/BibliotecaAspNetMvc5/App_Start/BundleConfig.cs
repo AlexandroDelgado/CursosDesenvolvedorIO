@@ -8,6 +8,17 @@ namespace BibliotecaAspNetMvc5
         // Para obter mais informações sobre o agrupamento, visite https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            // A opção setada como true, vai compilar os seus arquivos de bundle para produção, já a opção setada como false,
+            //     não executa a otimização.
+            // Isto também pode ser feito através do web.config na opção <compilation debug="true" targetFramework="4.6.1">
+            //BundleTable.EnableOptimizations = true;
+
+            // Cria os bundles para a otimização de arquivos
+            bundles.Add(new ScriptBundle("~/bundles/testes").Include(
+                "~/Scripts/teste1.js",
+                "~/Scripts/teste2.js"));
+
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
