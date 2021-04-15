@@ -12,9 +12,11 @@ namespace BibliotecaAspNetMvc5.Models
         // DataAnnotations: são as validações dos dados que são feitas na model, através de um processo chamado: ModelBind.
 
         // criando as propriedades
+        [Key]
         public int Id { get; set; }
 
         [DisplayName("Nome Completo*")]
+        [MaxLength(100, ErrorMessage = "No máximo 100 caracteres!")]
         [Required(ErrorMessage = "O campo {0} é requerido!")]
         public string Nome { get; set; }
 
