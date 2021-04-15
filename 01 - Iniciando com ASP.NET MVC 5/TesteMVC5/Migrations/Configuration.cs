@@ -7,6 +7,7 @@
     {
         public Configuration()
         {
+            // defina com true para permitir a aplicação das Migrations
             AutomaticMigrationsEnabled = true;
         }
 

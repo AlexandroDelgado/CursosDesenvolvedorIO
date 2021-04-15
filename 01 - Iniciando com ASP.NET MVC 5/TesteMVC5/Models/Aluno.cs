@@ -11,9 +11,11 @@ namespace TesteMVC5.Models
     {
         // DataAnnotations: são as validações dos dados que são feitas na models, através de um processo chamado: ModelBind.
 
+        [Key]
         public int Id { get; set; }
 
         [DisplayName("Nome Completo*")]
+        [MaxLength(100, ErrorMessage = "No máximo 100 caracteres!")]
         [Required(ErrorMessage = "O campo {0} é requerido")]
         public string Nome { get; set; }
        
