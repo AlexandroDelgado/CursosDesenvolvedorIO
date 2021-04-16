@@ -1,0 +1,48 @@
+Configuração:
+
+1) Crie uma "Solução".
+2) Crie um projeto do tipo "ASP.NET MVC Frame Work".
+
+1) Quando quizer trabalhar com identity, é sempre recomendável setar o mesmo no inicio do projeto.
+
+1) Altere a connectionString no web.config.
+2) Digite "enable-migrations" e aperte enter no package Manager Console para habilitar as migrations.
+3) Abra o arquivo "Migrations/Configuration.cs" e altere "AutomaticMigrationsEnabled = false" para true e limpe os códigos desnecessários dessa página.
+4) Digite "update-database -Verbose" e aperte enter para criar o banco de dados.
+5) Caso você não possua acesso de gravação no caminho indicado pela pasta defina como gravar para o usuário todos e retorne para o passo 4.
+6) Geralmente ele reclama da string de conexão de acordo com a sua instância no banco de dados e retorne para o passo 4.
+7) Também costuma reclamar que o diretório App_Data não existe. Neste caso é só navegar até o local do mesmo e criar a pasta lá com o mesmo nome e retorne para o passo 4.
+8) Execute a aplicação, clique em "Registrar" do lado direito e faça o seu registro.
+
+Criando os templates:
+
+1) Crie a modelo desejada e compile a aplicação.
+2) Clique com o botão direto do mouse sobre a pasta controllers/adicionar/controlador e em seguida
+3) Escolha a opção "Instalado/Comum/MVC/Controlador" e em seguida "Controlador MVC 5 com modos de exibição usando o Entity Frameork", e clique no botão ok.
+5) Adicione a "Casse do Modelo:" desejada, a Classe de contexto de dados "ApplicationDbContext", e flag os campos "Usar ações assíncronas do controlador", 
+	"gerar modos de exibição", "Blibliotecas de scripts de referência" e "Usar uma página de layout". E por fim informe o nome do seu controller.
+6) Abra o arquivo de classe que você criou e substitua o plural errado caso exista.
+7) Abra o arquivo "Models\IdentityModels.cs" e verifique se ele colocou o "public DbSet<Aluno> Alunos { get; set; }", caso tenha colocado, limpe o código desnecessário, 
+	senão coloque o código lá.
+8) Ainda no arquivo "Models\IdentityModels.cs", adicione o código abaixo:
+
+        // Trata as convenções de linguagem pluralizada
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // Não permite que o Visual Studio pluralize as tabelas.
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            // Informa ao Entity Framework para utilizar o nome da tabela no plural.
+            modelBuilder.Entity<Aluno>().ToTable("Alunos");
+
+            // Cria o modelo solicitado
+            base.OnModelCreating(modelBuilder);
+        }
+
+09) Compile a sua aplicação.
+10) Vá até o console do gerenciador de Pacotes e digite o texto: "update-database -Verbose" para atualizar a nomenclatura da sua tabela no banco de dados.
+11) Vá até o arquivo "App_Start/RouteConfig.cs" e adicione "routes.MapMvcAttributeRoutes();", acima do "routes.MapRoute(" para fazer o mapeamento de rotas adicionais.
+12) Retorne até a controller criada a partir do model em que você está trabalhando, adicione "readonly" na instância de conexão com o banco de dados, adicione as rotas e 
+    remova as condições de aceitar nulo, também aproveite para trocar a "classe" por "var" sempre que for possível.
+13) Vá até "Shared\_layout.cshtml" e crie o link de acesso para o seu método.
+14) Abra as Views do seu método e traduza os textos.
