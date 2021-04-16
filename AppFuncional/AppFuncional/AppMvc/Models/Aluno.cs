@@ -19,18 +19,21 @@ namespace AppMvc.Models
         [MaxLength(80, ErrorMessage = "O campo {0} não aceita mais que 80 caractéres")] // Define o tamanho máximo de caracteres
         public string Nome { get; set; }
 
-        [DisplayName("E-mail")] // Informa o nome do campo para exibição
+        [DisplayName("E-mail*")] // Informa o nome do campo para exibição
         [Required(ErrorMessage = "O campo {0} é obrigatório")] // Obriga o preenchimento do mesmo
         [MinLength(6, ErrorMessage = "O campo {0} não aceita menos que 6 caractéres")] // Define o tamanho máximo de caracteres
         [MaxLength(254, ErrorMessage = "O campo {0} não aceita mais que 254 caractéres")] // Define o tamanho máximo de caracteres
         [EmailAddress(ErrorMessage = "E-mail em formato inválido")] // Válida o e-mail
         public string Email { get; set; }
 
-        [DisplayName("CPF")] // Informa o nome do campo para exibição
+        [DisplayName("CPF*")] // Informa o nome do campo para exibição
         [Required(ErrorMessage = "O campo {0} é obrigatório")] // Obriga o preenchimento do mesmo
         [MinLength(14, ErrorMessage = "O campo {0} deve ter 14 caractéres, entre números e pontuação")] // Define o tamanho máximo de caracteres
         [MaxLength(14, ErrorMessage = "O campo {0} deve ter 14 caractéres, entre números e pontuação")] // Define o tamanho máximo de caracteres
         public string CPF { get; set; }
+
+        [DisplayName("Descricao")] // Informa o nome do campo para exibição
+        public string Descricao { get; set; }
 
         [DisplayName("Data da Matricula")] // Informa o nome do campo para exibição
         [Required(ErrorMessage = "O campo {0} é obrigatório")] // Obriga o preenchimento do mesmo

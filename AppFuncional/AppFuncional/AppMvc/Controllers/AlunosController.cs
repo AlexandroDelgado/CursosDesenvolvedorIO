@@ -60,10 +60,11 @@ namespace AppMvc.Controllers
         [ValidateAntiForgeryToken]
         // Bind quer dizer que a classe Aluno a ser criada nessa action só poderá receber os atributos que estão no parametro include,
         // caso seja passado mais algum atributo será definido com nulo.
-        public async Task<ActionResult> Create([Bind(Include = "Id,Nome,Email,CPF,DataMatricula,Ativo")] Aluno aluno)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Nome,Email,Descricao,CPF,Ativo")] Aluno aluno)
         {
             if (ModelState.IsValid)
             {
+                aluno.DataMatricula = DateTime.Now;
                 db.Alunos.Add(aluno);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -97,12 +98,13 @@ namespace AppMvc.Controllers
         [ValidateAntiForgeryToken]
         // Bind quer dizer que a classe Aluno a ser criada nessa action só poderá receber os atributos que estão no parametro include,
         // caso seja passado mais algum atributo será definido com nulo.
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Nome,Email,CPF,DataMatricula,Ativo")] Aluno aluno) 
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Nome,Email,Descricao,CPF,Ativo")] Aluno aluno) 
         {
             // Verifica se o Modelo é valido
             if (ModelState.IsValid)
             {
                 db.Entry(aluno).State = EntityState.Modified;
+                db.Entry(aluno).Property(a => a.DataMatricula).IsModified = false; // Impede a alteração da data de matricula
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

@@ -45,4 +45,7 @@ Criando os templates:
 12) Retorne até a controller criada a partir do model em que você está trabalhando, adicione "readonly" na instância de conexão com o banco de dados, adicione as rotas e 
     remova as condições de aceitar nulo, também aproveite para trocar a "classe" por "var" sempre que for possível.
 13) Vá até "Shared\_layout.cshtml" e crie o link de acesso para o seu método.
-14) Abra as Views do seu método e traduza os textos.
+14) Abra as Views do seu método e traduza os textos e edite o html ao seu gosto.
+15) Vá na controller referente ao seu modelo e informe: "db.Entry(aluno).Property(a => a.DataMatricula).IsModified = false;", embaixo do state e antes de salvar, 
+    para não alterar o campo no banco de dados, aproveite e remova o mesmo campo do bind no método de inclusão.
+16) Adicione um campo a mais na aplicação, chamado "Descrição", em seguida vá para o "Console do Gerenciador de Pacotes" e digite "update-database -Verbose" e aperte enter.

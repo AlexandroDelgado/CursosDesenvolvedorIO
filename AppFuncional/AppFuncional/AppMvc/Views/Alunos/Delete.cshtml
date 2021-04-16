@@ -1,14 +1,14 @@
 ﻿@model AppMvc.Models.Aluno
 
 @{
-    ViewBag.Title = "Alunos";
+    ViewBag.Title = "Gestão de alunos";
 }
 
-<h2>Excluir</h2>
+<h2>Exclusão de alunos</h2>
 
-<h3>Tem certeza que deseja excluir esse registro?</h3>
+<h3>Tem certeza que deseja excluir o(a) aluno(a): @Model.Nome?</h3>
 <div>
-    <h4>Aluno</h4>
+    <h4>Aluno(a)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -36,6 +36,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.DataMatricula)
         </dt>
 
@@ -56,9 +64,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Salvar" class="btn btn-default" /> |
-            @Html.ActionLink("Retornar para a lista", "Index")
-        </div>
+<div class="form-actions no-color">
+    <input type="submit" value="Excluir" class="btn btn-success" />
+    @Html.ActionLink("Voltar", actionName: "Index", routeValues: null, htmlAttributes: new { @class = "btn btn-default" })
+</div>
     }
 </div>

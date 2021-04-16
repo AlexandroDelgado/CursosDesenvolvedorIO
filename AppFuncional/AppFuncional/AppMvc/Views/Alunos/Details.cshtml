@@ -35,6 +35,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.DataMatricula)
         </dt>
 
@@ -53,6 +61,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Retornar para a lista", "Index")
+    @Html.ActionLink(linkText: "Editar", actionName: "Edit", routeValues: new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-success" })
+    @Html.ActionLink(linkText: "Voltar", actionName: "Index", routeValues: new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-info" })
 </p>
