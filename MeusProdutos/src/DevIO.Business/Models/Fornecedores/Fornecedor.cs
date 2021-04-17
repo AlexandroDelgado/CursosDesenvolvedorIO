@@ -16,6 +16,5 @@ namespace DevIO.Business.Models.Fornecedores
 
         /* Entity Framework - Relação */
         public ICollection<Produto> Produtos { get; set; } // Essa coleção, é uma relação com o entity framework por que ele irá trazer os produtos da base. ICollection permite a inclusão de produtos.
-
     }
 }

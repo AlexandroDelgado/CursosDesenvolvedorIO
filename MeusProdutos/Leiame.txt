@@ -50,5 +50,8 @@ MODELANDO A CAMADA DE NEGÓCIOS
 
 3) Na pasta "Core\Models" adicione uma classe chamada "Entity".
 4) Na pasta "Models\Fornecedores" crie uma classe chamada "Fornecedor" que herdará da classe "Entity".
-4) Na pasta "Models\Fornecedores" crie uma classe chamada "Endereco" que herdará da classe "Entity".
-6) Na pasta "Models\Produtos" crie um classe chamada "Protudo" que herdará da classe "Entity".
+5) Na pasta "Models\Fornecedores" crie uma classe chamada "Endereco" que herdará da classe "Entity".
+6) Na pasta "Models\Fornecedores" crie uma classe chamada "TipoFornecedor".
+7) Na pasta "Models\Produtos" crie um classe chamada "Produto" que herdará da classe "Entity".
+8) Siga conforme esta Escrito nos arquivos
+

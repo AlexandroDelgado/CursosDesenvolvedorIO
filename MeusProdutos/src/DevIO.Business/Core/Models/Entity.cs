@@ -5,7 +5,6 @@ namespace DevIO.Business.Core.Models
     // Essa é uma classe Abstract(mãe) que não pode ser instanciada apenas herdada.
     public abstract class Entity // Definida como sendo uma entidade
     {
-
         // Conceito de entidade: é aquela que possui valor único, como um CPF, ninguém pode ter um CPF igual, tranformando a entidade em algo identificavel.
         //      tudo que for uma entidade pode ser persistido no banco, tendo um id único para poder ser localizado. 
         //      E neste caso usamos o "Id = Guid.NewGuid();" como uma chave primária e não o CPF.
