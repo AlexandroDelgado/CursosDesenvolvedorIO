@@ -35,3 +35,20 @@ COMEÇANDO O CURSO MVC5 AVANÇADO
 	Observação: A camada MVC consegue enxergar as camadas de Negócio e Infra.
 			Já a camada de Infra consegue enchergar a camada de Negócio.
 			E a camada de Negócios não deve enxergar nenhuma das outras camadas.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+MODELANDO A CAMADA DE NEGÓCIOS
+
+1) Procure iniciar a sua aplicação pela camada de negócios, para ter uma visão melhor de que models irá precisar depois.
+
+2) Crie duas pastas que irão receber as entidades e as composições de responsabilidades:
+	a) Core = Em projetos mais complexos transforme a pasta "Core" em um projeto, já em projetos mais simples pode ser pasta mesmo. (Entender Melhor essa Idéia)
+		Essa pasta ficará as classes gerais, que não são Fornecedores e nem Produtos.
+	b) Models = Dentro desta pasta crie uma pasta para cada funcionalidade, no caso deste projeto crie: "Fornecedores" e "Produtos". Procure usar o nome das pastas no
+		plural para evitar problemas de compartibilidade com a própria classe exe: Fornecedores/Fornecedor.cs
+	c) Core = Crie uma pasta "Models" dentro da pasta "Core" também para representar os objetos base do conceito no caso de entidade.
+
+3) Na pasta "Core\Models" adicione uma classe chamada "Entity".
+4) Na pasta "Models\Fornecedores" crie uma classe chamada "Fornecedor" que herdará da classe "Entity".
+4) Na pasta "Models\Fornecedores" crie uma classe chamada "Endereco" que herdará da classe "Entity".
+6) Na pasta "Models\Produtos" crie um classe chamada "Protudo" que herdará da classe "Entity".
