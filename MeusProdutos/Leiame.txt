@@ -55,3 +55,18 @@ MODELANDO A CAMADA DE NEGÓCIOS
 7) Na pasta "Models\Produtos" crie um classe chamada "Produto" que herdará da classe "Entity".
 8) Siga conforme esta Escrito nos arquivos
 
+--------------------------------------------------------------------------------------------------------------------------------------
+INTERFACES DE ACESSO A DADOS
+
+obs: Podemos fazer a parte de acesso a dados na camada de negócio ao invés da camada de infra, ja que estamos falando de interfaces e não imprementação concreta.
+
+1) Na camada de Negócios, crie uma pasta chamada "Cor\Data" e dentro dessa pasta crie uma classe chamada "IRepository". E utilize o código.
+2) Clique na pasta com o botão direito na pasta "Models\Fornecedores (Não é a do Core)", e clique em adicionar/Novo Item, e escolha um arquivo do 
+	tipo Repository e chame o mesmo de IFornecedorRepository e clique em ok.
+3) Clique na pasta com o botão direito na pasta "Models\Fornecedores (Não é a do Core)", e clique em adicionar/Novo Item, e escolha um arquivo do 
+	tipo Repository e chame o mesmo de IEnderecoRepository e clique em ok.
+3) Clique na pasta com o botão direito na pasta "Models\Produtos (Não é a do Core)", e clique em adicionar/Novo Item, e escolha um arquivo do 
+	tipo Repository e chame o mesmo de IProdutoRepository e clique em ok.
+
+
+	
