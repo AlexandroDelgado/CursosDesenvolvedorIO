@@ -1,0 +1,37 @@
+COMEÇANDO O CURSO MVC5 AVANÇADO
+
+1) Sempre criem uma solução em branco.
+
+2) Crie as pastas dentro desta solução: 
+	a. "src" que irá receber os projetos 
+	b. "tests" que irá receber os projetos de testes.
+	c. "sql" = que irá manter os scripts.
+	d. "docs" = que irá manter os documentos.
+
+3) Padronizações:
+	a. Nome de projeto (Microsoft.AspNet.Razor) a microsoft por exemplo usa esta padronização onde:
+		Microsoft = Nome da empresa.
+		AspNet = Nome do projeto.
+		Razor = Nome da especialização.
+
+4) Framework:
+	Por padrão é sempre interessante utilizar a versão anterior mais nova, por ser uma versão mais estável.
+	Caso você queira que este projeto seja parte de um projeto CORE, a versão mais estável para comunicação
+		é a 4.6 (verificar se existem mais novas).
+	Agora se for apenas um projeto em MVC você pode até fazer na 4.8.
+
+5) Crie 3 projetos:
+	DevIO.AppMVC (Projeto)
+	DevIO.Business (Camada de Negócios)
+	DevIO.Infra (Camada de Dados)
+
+6) Configurando os projetos:
+	a) Abra as referências na camada de negócios (DevIO.Business/Referências) e deixe apenas a referência para "System".
+	b) Na camada MVC (DevIo.AppMVC) adicione as referências de projetos (clicando com o botão direito do mouse em cima dela, 
+			adicionar, referências... e escolha a opção projetos no menu ao lado direito da tela.
+		Selecione as camadas Negócios e Infra e clique em OK.
+	c) Na camada de (DevIo.Infra) de acesso a referêcia da camada de Negócios (DevIo.Business).
+
+	Observação: A camada MVC consegue enxergar as camadas de Negócio e Infra.
+			Já a camada de Infra consegue enchergar a camada de Negócio.
+			E a camada de Negócios não deve enxergar nenhuma das outras camadas.
