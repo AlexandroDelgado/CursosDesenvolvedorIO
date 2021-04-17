@@ -11,6 +11,10 @@ using AppMvc.Models;
 
 namespace AppMvc.Controllers
 {
+    // Obriga o usuário a se logar, para utilizar qualquer um dos métodos.
+    // Você também poderá deixa-lo para todos e e liberar um método especifico através do : [AllowAnonymous].
+    [Authorize] // Caso você adicione em cima de um método expecifico, apenas aquel método solicitará logon.
+
     // Herda a classe controller
     public class AlunosController : Controller
     {
@@ -19,6 +23,8 @@ namespace AppMvc.Controllers
 
         // Informa o método a ser utilizado para envio
         [HttpGet]
+        [AllowAnonymous] // libera esse método para vizualização de qualquer pessoa.
+        [OutputCache(Duration = 1)] // Guarda o conteúdo em cache pelo tempo determinado e só volta a atualizar o conteúdo após concluir a definição em segundos.
         // cria a rota para a lista de alunos
         [Route(template: "Listar-Alunos")]
         public async Task<ActionResult> Index()
@@ -55,6 +61,10 @@ namespace AppMvc.Controllers
         [HttpPost]
         // cria a rota para a lista de alunos
         [Route(template: "Novo-Aluno")]
+        // Caso ocorra um erro expecifico neste caso de referência nula, ele redireciona o usuário para uma view especifica.
+        [HandleError(ExceptionType = typeof(NullReferenceException), View = "Erro")]
+        // Desabilita a validação tanto da view, quanto do modelo
+        [ValidateInput(enableValidation: true)] // Sendo True para validar e False para desabilitar
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [ValidateAntiForgeryToken]
@@ -62,14 +72,17 @@ namespace AppMvc.Controllers
         // caso seja passado mais algum atributo será definido com nulo.
         public async Task<ActionResult> Create([Bind(Include = "Id,Nome,Email,Descricao,CPF,Ativo")] Aluno aluno)
         {
+            // verifica se o objeto aluno está cadastrado corretamente
             if (ModelState.IsValid)
             {
-                aluno.DataMatricula = DateTime.Now;
-                db.Alunos.Add(aluno);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                aluno.DataMatricula = DateTime.Now; // Informa a data atual como data de matricula
+                db.Alunos.Add(aluno); // Adiciona o objeto ao Contexto da memória para ser salvo no banco
+                await db.SaveChangesAsync(); // Salva o usuário no banco
+                TempData["Mensagem"] = "Aluno cadastrado com sucesso"; // Cria uma passagem de dados que irá passar por outro método ou controler e persister até a leitura.
+                return RedirectToAction("Index"); // Encaminha o usuário para a Lista de alunos.
             }
 
+            // Retorna o aluno para a View de cadastro.
             return View(aluno);
         }
 
@@ -85,6 +98,8 @@ namespace AppMvc.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.Mensagem = "Não esqueça que esta ação é irreversível."; // Passa dados de uma controller para uma view sem precisar de uma model.
             
             return View(aluno);
         }
@@ -106,6 +121,7 @@ namespace AppMvc.Controllers
                 db.Entry(aluno).State = EntityState.Modified;
                 db.Entry(aluno).Property(a => a.DataMatricula).IsModified = false; // Impede a alteração da data de matricula
                 await db.SaveChangesAsync();
+                TempData["Mensagem"] = "Aluno cadastrado com sucesso"; // Cria uma variavel que irá persister até a leitura.
                 return RedirectToAction("Index");
             }
 
