@@ -32,7 +32,7 @@ namespace AppMvc.Models
         [MaxLength(14, ErrorMessage = "O campo {0} deve ter 14 caractéres, entre números e pontuação")] // Define o tamanho máximo de caracteres
         public string CPF { get; set; }
 
-        [DisplayName("Descricao")] // Informa o nome do campo para exibição
+        [DisplayName("Descrição")] // Informa o nome do campo para exibição
         public string Descricao { get; set; }
 
         [DisplayName("Data da Matricula")] // Informa o nome do campo para exibição
