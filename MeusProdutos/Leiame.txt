@@ -90,3 +90,5 @@ obs: Mapeando o banco de dados e provendo o acesso a dados através do Entity Fr
 11) Ele criou a pasta "Migrations" e o arquivo "Configuration.cs", acesse este arquivo, remova os scripts desnecessários e altere o "AutomaticMigrationsEnabled" para true,
 	e arraste a pasta "Migrations" para dentro da pasta "Data".
 12) Vá até o "Console do Gerenciador de Pacotes" e digite o comando "update-database -Script".
+13) Caso o seu script de criação do banco, seja satisfatório, salve ele na pasta "sql" que está no diretório desta solução para ser encaminhado para o DBA para aprovação.
+14) Execute "update-database" para alterar a base de dados.
