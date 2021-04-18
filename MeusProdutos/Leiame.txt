@@ -68,5 +68,16 @@ obs: Podemos fazer a parte de acesso a dados na camada de negócio ao invés da 
 3) Clique na pasta com o botão direito na pasta "Models\Produtos (Não é a do Core)", e clique em adicionar/Novo Item, e escolha um arquivo do 
 	tipo Repository e chame o mesmo de IProdutoRepository e clique em ok.
 
+-----------------------------------------------------------------------------------------------------------------------------------------
+MAPEANDO BANCO DE DADOS
 
+obs: Mapeando o banco de dados e provendo o acesso a dados através do Entity Framework.
+
+1) Na camada Infra, crie uma pasta chamada "Data", dentro dessa pasta, crie uma nova pasta chamada "Context" e dentro da context crie uma classe chamada "MeuDbContex.cs"
+	(Caso fosse uma aplicação real chamaria de ProjetoBancoDbContext.cs).
+2) Vá até o "Console do Gerenciador de Pacotes", aponte a "Origem do pacote: nuget.org" e aponte o "Projeto padrão: para Infra". Em seguida digite no console: 
+	"install-package EntityFramework" e aperte enter.
+3) Configure o arquivo "MeuDbContext.cs".
+4) Vá até o "Console do Gerenciador de Pacotes" e digite o comando "Enable-Migrations". O mesmo lhe retornará um erro e irá solicitar para que você utilize o Flent API 
+	().
 	
