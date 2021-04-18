@@ -96,4 +96,7 @@ obs: Mapeando o banco de dados e provendo o acesso a dados através do Entity Fr
 --------------------------------------------------------------------------------------------------------------------------------------
 PADRÃO REPOSITORY
 
-1) 
+0bs: Utilizaremos dois padrões de repositórios o primeiro é o "Abstract ou Generic Repository"
+
+
+1) Crie uma pasta chamada "Repository" em "DevIO.Infra\Data\", e em seguida crie dentro desta pasta uma classe chamada "Repository.cs"
