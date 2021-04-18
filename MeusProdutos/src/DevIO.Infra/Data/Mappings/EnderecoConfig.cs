@@ -22,6 +22,7 @@ namespace DevIO.Infra.Data.Mappings
                 .HasMaxLength(5); // Informa o tamanho máximo
 
             Property(c => c.Cep) // Mapea o cep
+                .HasColumnType("char") // informa o formato exato do campo
                 .IsRequired() // informa que é obrigatório
                 .HasMaxLength(8) // Informa o tamanho máximo
                 .IsFixedLength(); // Informa que o tamanho é fixo, ou seja sempre vai ser 8, igual a um char(8).
