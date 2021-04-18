@@ -78,6 +78,15 @@ obs: Mapeando o banco de dados e provendo o acesso a dados através do Entity Fr
 2) Vá até o "Console do Gerenciador de Pacotes", aponte a "Origem do pacote: nuget.org" e aponte o "Projeto padrão: para Infra". Em seguida digite no console: 
 	"install-package EntityFramework" e aperte enter.
 3) Configure o arquivo "MeuDbContext.cs".
-4) Vá até o "Console do Gerenciador de Pacotes" e digite o comando "Enable-Migrations". O mesmo lhe retornará um erro e irá solicitar para que você utilize o Flent API 
-	().
-	
+4) Vá até o "Console do Gerenciador de Pacotes" e digite o comando "Enable-Migrations" e aperte enter. O mesmo lhe retornará um erro e irá solicitar para que você 
+	utilize o Flent API ().
+5) Dentro da pasta "DevIO.Infra\Data" crie uma nova pasta chamada "Mappings".
+6) Dentro desta pasta "Mappings" crie um arquivo chamado "FornecedorConfig.cs" (Nos próximos projetos chame de FornecedorMapping.cs) e adicione o conteúdo da mesma. 
+	Por este motivo que a camada de acesso a dados(Infra) precisa conhecer a camada de negócios(Business), para poder mapear os objetos.
+7) Dentro desta pasta "Mappings" crie um arquivo chamado "EnderecoConfig.cs" e adicione o conteúdo da mesma. 
+8) Dentro desta pasta "Mappings" crie um arquivo chamado "ProdutoConfig.cs" e adicione o conteúdo da mesma.
+9) Agora abra a classe MeuDbContext e efetue a configuração dos mapeamentos, logo abaixo dos mapeamentos do DbSet.
+10) Vá até o "Console do Gerenciador de Pacotes" e digite o comando "Enable-Migrations" e aperte enter.
+11) Ele criou a pasta "Migrations" e o arquivo "Configuration.cs", acesse este arquivo, remova os scripts desnecessários e altere o "AutomaticMigrationsEnabled" para true,
+	e arraste a pasta "Migrations" para dentro da pasta "Data".
+12) Vá até o "Console do Gerenciador de Pacotes" e digite o comando "update-database -Script".
