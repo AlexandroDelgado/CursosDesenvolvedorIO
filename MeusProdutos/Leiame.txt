@@ -96,7 +96,16 @@ obs: Mapeando o banco de dados e provendo o acesso a dados através do Entity Fr
 --------------------------------------------------------------------------------------------------------------------------------------
 PADRÃO REPOSITORY
 
-0bs: Utilizaremos dois padrões de repositórios o primeiro é o "Abstract ou Generic Repository"
+0bs: Utilizaremos dois padrões de repositórios o primeiro é o "Abstract ou Generic Repository". Não se deve estanciar um repositório genérico para trabalhar com uma entidade, 
+		e sim delegar herança através de um repositório especializado.
+
+		Repositório Genérico: Implementa o  que todas as entidades fazem em comum.
+			(Quando eu quero sobreescrever um método simplesmente faço um override do método no repositório genérico).
+		Repositório Especializado: Implementa o que as entidades fazem por conta própria, ou seja, de forma especifica.
 
 
-1) Crie uma pasta chamada "Repository" em "DevIO.Infra\Data\", e em seguida crie dentro desta pasta uma classe chamada "Repository.cs"
+	 Temos então um respositorio especializado para cada entidade, um repositóri genérico para o que todas as entidades fazem em comum, 
+
+1) Crie uma pasta chamada "Repository" em "DevIO.Infra\Data\", e em seguida crie dentro desta pasta uma classe chamada "Repository.cs".
+2) Dentro de "DevIO.Infra\Data\Repository\" crie uma classe chamada "FornecedorRepository.cs", "EndereçoRepository.cs" e uma "ProdutosRepository.cs", que que serão os 
+	repositórios especializados, que herdaram as classes genéricas das entidades.
