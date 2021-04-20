@@ -109,3 +109,17 @@ PADRÃO REPOSITORY
 1) Crie uma pasta chamada "Repository" em "DevIO.Infra\Data\", e em seguida crie dentro desta pasta uma classe chamada "Repository.cs".
 2) Dentro de "DevIO.Infra\Data\Repository\" crie uma classe chamada "FornecedorRepository.cs", "EndereçoRepository.cs" e uma "ProdutosRepository.cs", que que serão os 
 	repositórios especializados, que herdaram as classes genéricas das entidades.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+VALIDAÇÕES, SERVIÇOS E PROCESSOS DE NEGÓCIOS
+
+Obs: A camada de negócios é a responsável por garantir o fluxo e a consistência do seu processo.
+
+1) Vá até o "Console do Gerenciador de Pacotes" e selecione Package source: "nuget.org", Default Projetct: "DevIO.Business" em seguida digite: "Install-Package FluentValidation -Version 9.2.2" e precione enter.
+2) Na pasta "Core" em "DevIO.Business\Core\" crie uma pasta chamada: "Documents" e dentro dela crie uma classe chamada "ValidacaoDocs". (que depois será separada em CPF e CNPJ)
+3) Crie uma pasta chamada "Validations" em "DevIO.Business\Models\Fornecedores\", e em seguida crie dentro desta pasta uma classe chamada "FornecedorValidation.cs" e uma 
+	chamada "EnderecoValidation.cs".
+4) Crie uma pasta chamada "Validations" em "DevIO.Business\Models\Produtos\", e em seguida crie dentro desta pasta uma classe chamada "ProdutoValidation.cs".
+5) Crie uma pasta chamada "Services" em "DevIO.Business\Models\Fornecedores\", e em seguida crie dentro desta pasta uma Interface chamada "IFornecedorService.cs" e uma classe
+	chamada "FornecedorService.cs"
+6) Crie uma pasta chamada Services em "DevIo.Business\Core\", e em seguida crie uma classe chamada "BaseService.cs".
