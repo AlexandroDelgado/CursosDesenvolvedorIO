@@ -20,12 +20,12 @@ namespace DevIO.Business.Models.Fornecedores.Validations
                 // Valida a quantidade de caracteres do CPF
                 RuleFor(expression: f => f.Documento.Length) // Verifica a quantidade de caracteres do documento
                     .Equal(toCompare: CpfValidacao.TamanhoCpf) // Compara com a quantidade de caracteres necessários para o CPF
-                    .WithMessage("O campo {PropertyName} precisa ter {ComparisonValue caracteres e foi fornecido {PropertyValue}"); // Retorna a mensagem de erro
+                    .WithMessage("O CPF precisa ter {ComparisonValue} caracteres e foi fornecido {PropertyValue}"); // Retorna a mensagem de erro
 
                 // Valida a numeração do CPF
                 RuleFor(expression: f => CpfValidacao.Validar(f.Documento)) // Passa o CPF para a validação
                     .Equal(toCompare: true) // Verifica o retorno do CPF
-                    .WithMessage("O {PropertyName} fornecido é inválido!"); // Retorna a mensagem de erro
+                    .WithMessage("O CPF fornecido é inválido!"); // Retorna a mensagem de erro
             });
 
             // Regra de validação para CNPJ
@@ -34,12 +34,12 @@ namespace DevIO.Business.Models.Fornecedores.Validations
                 // 
                 RuleFor(expression: f => f.Documento.Length) // Verifica a quantidade de caracteres do documento
                     .Equal(toCompare: CnpjValidacao.TamanhoCnpj) // Compara com a quantidade de caracteres necessários para o CNPJ
-                    .WithMessage("O campo {PropertyName} precisa ter {ComparisonValue caracteres e foi fornecido {PropertyValue}"); // Retorna a mensagem de erro
+                    .WithMessage("O CNPJ precisa ter {ComparisonValue} caracteres e foi fornecido {PropertyValue}"); // Retorna a mensagem de erro
 
                 // Valida a numeração do CNPJ
                 RuleFor(expression: f => CnpjValidacao.Validar(f.Documento)) // Passa o CNPJ para a validação
                     .Equal(toCompare: true) // Verifica o retorno do CNPJ
-                    .WithMessage("O {PropertyName} fornecido é inválido!"); // Retorna a mensagem de erro
+                    .WithMessage("O CNPJ fornecido é inválido!"); // Retorna a mensagem de erro
             });
         }
 

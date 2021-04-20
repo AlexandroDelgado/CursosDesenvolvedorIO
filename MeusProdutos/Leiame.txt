@@ -116,10 +116,42 @@ VALIDAÇÕES, SERVIÇOS E PROCESSOS DE NEGÓCIOS
 Obs: A camada de negócios é a responsável por garantir o fluxo e a consistência do seu processo.
 
 1) Vá até o "Console do Gerenciador de Pacotes" e selecione Package source: "nuget.org", Default Projetct: "DevIO.Business" em seguida digite: "Install-Package FluentValidation -Version 9.2.2" e precione enter.
-2) Na pasta "Core" em "DevIO.Business\Core\" crie uma pasta chamada: "Documents" e dentro dela crie uma classe chamada "ValidacaoDocs". (que depois será separada em CPF e CNPJ)
+2) Na pasta "Core" em "DevIO.Business\Core\" crie uma pasta chamada:  "Validations" e dentro desta pasta, crie outra pasta chamada "Documents" e dentro dela crie uma classe 
+	chamada "ValidacaoDocs". (que depois será separada em CPF e CNPJ)
 3) Crie uma pasta chamada "Validations" em "DevIO.Business\Models\Fornecedores\", e em seguida crie dentro desta pasta uma classe chamada "FornecedorValidation.cs" e uma 
 	chamada "EnderecoValidation.cs".
 4) Crie uma pasta chamada "Validations" em "DevIO.Business\Models\Produtos\", e em seguida crie dentro desta pasta uma classe chamada "ProdutoValidation.cs".
 5) Crie uma pasta chamada "Services" em "DevIO.Business\Models\Fornecedores\", e em seguida crie dentro desta pasta uma Interface chamada "IFornecedorService.cs" e uma classe
 	chamada "FornecedorService.cs"
 6) Crie uma pasta chamada Services em "DevIo.Business\Core\", e em seguida crie uma classe chamada "BaseService.cs".
+7) Adicione uma nova controller em "DevIO.AppMVC\Controllers" como o nome de "FornecedoresController.cs".
+8) Crie uma pasta em "DevIO.Business\Models\Produtos\" chamada "Services" e dentro desta pasta crie uma interface chamada "IProdutoService.cx" e uma classe chamada "ProdutoService.cs".
+9) Crie uma pasta chamada "Notifications" em "DevIo.Business\Core\", e em seguida crie uma classe chamada "Notificacao.cs", uma interface chamada "INotificador.cs" e uma classe chamada "Notificador.cs".
+
+--------------------------------------------------------------------------------------------------------------------------------------
+SETUP DA CAMADA DE APRESENTAÇÃO
+
+
+
+
+__________________________________________________________________________________________________________________________________________________________________________
+CORREÇÕES A SEREM FEITAS.
+
+Veja: 
+	O que é um arquivo de resurce?
+
+	O que é injeção de dependencia?
+
+	Tutorial do Eduardo Pires no youtube sobre Especification Partern (Para caprichar na regra de negócios).
+	
+
+1) Divida o arquivo "DevIO.Business\Core\Validations\ValidacaoDocs.cs", para dois arquivos chamados "CPF.cs" e "CNPJ.cs" na mesma pasta, pegue o conteúdo da 
+	classe ValidacaoDocs.cs e divida nas outras duas classes, remova a classe ValidacaoDocs.cs e teste a aplicação e em seguida melhore os textos das mensagens de validação.
+
+2) Altere o campo numero do endereço para int, faça o update no banco e teste a aplicação.
+
+3) Altere o id de Guid para int, faça o update no banco e teste a aplicação.
+
+4) Altere o formato do repositório do fornecedor para permitir "Tipo de Telefone".
+
+5) Altere o formato do repositório de endereço para permitir o cadastro de "Tipo de Endereço".

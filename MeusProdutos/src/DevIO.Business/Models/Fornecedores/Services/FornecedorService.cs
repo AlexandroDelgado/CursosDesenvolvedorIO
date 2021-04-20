@@ -1,4 +1,5 @@
-﻿using DevIO.Business.Core.Services;
+﻿using DevIO.Business.Core.Notifications;
+using DevIO.Business.Core.Services;
 using DevIO.Business.Models.Fornecedores.Validations;
 using System;
 using System.Linq;
@@ -13,8 +14,9 @@ namespace DevIO.Business.Models.Fornecedores.Services
         private readonly IFornecedorRepository _fornecedorRepository;
         private readonly IEnderecoRepository _enderecoRepository;
 
-        // Cria o construtor
-        public FornecedorService(IFornecedorRepository fornecedorRepository, IEnderecoRepository enderecoRepository)
+        // Cria o construtor 
+        // implementa a interface e a base "INotificador notificador) : base(notificador)"
+        public FornecedorService(IFornecedorRepository fornecedorRepository, IEnderecoRepository enderecoRepository, INotificador notificador) : base(notificador)
         {
             _fornecedorRepository = fornecedorRepository;
             _enderecoRepository = enderecoRepository;
@@ -53,7 +55,13 @@ namespace DevIO.Business.Models.Fornecedores.Services
             var fornecedor = await _fornecedorRepository.ObterFornecedorProdutosEndereco(id);
 
             // Verifica se o fornecedor possui produtos
-            if (fornecedor.Produtos.Any()) return;
+            if (fornecedor.Produtos.Any())
+            {
+                // Adiciona a lista de mensagens
+                Notificar(mensagem: "O fornecedor possui produtos cadastrados!");
+
+                return;
+            }
 
             // verifica se o fornecedor possui endereço
             if (fornecedor.Endereco != null)
@@ -81,8 +89,14 @@ namespace DevIO.Business.Models.Fornecedores.Services
             // Seta a variavel com o valor do método assincrono buscar, onde Documento seja igual a Documento e Id seja diferente de id 
             var fornecedorAtual = await _fornecedorRepository.Buscar(f => f.Documento == fornecedor.Documento && f.Id != fornecedor.Id);
 
-            // Retorna verdadeiro caso seja encontrado algum elemento
-            return fornecedorAtual.Any();
+            // verifica se é um fornecedor existente
+            if (!fornecedorAtual.Any()) return false;
+
+            // inseri a notificação
+            Notificar(mensagem: "Já existe um fornecedor com este documento informado!");
+
+            // fornecedor existente
+            return true;
         }
 
         // Remove o objeto da mémoria
