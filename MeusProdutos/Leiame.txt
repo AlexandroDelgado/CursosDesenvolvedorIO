@@ -131,6 +131,15 @@ Obs: A camada de negócios é a responsável por garantir o fluxo e a consistên
 --------------------------------------------------------------------------------------------------------------------------------------
 SETUP DA CAMADA DE APRESENTAÇÃO
 
+obs: 
+	ViewModels = Podem receber DataAnnotations, é um Pattern de camada de apresentação e nem sempre é igual a entidade que está representando, podendo exibir dados de diversas entidades.
+	Extensions = 
+
+1) Crie duas pastas chamadas "ViewModels" e "Extensions" na raiz da aplicação "DevIO.AppMVC".
+2) Na pasta "ViewModels" crie uma classe chamada "ProdutoViewModel.cs", que será uma representação da "Entidade Produto" da regra de negócios.
+3) Na pasta "ViewModels" crie uma classe chamada "FornecdorViewModel.cs", que será uma representação da "Entidade Fornecedor" da regra de negócios.
+4) Na pasta "ViewModels" crie uma classe chamada "EnderecoViewModel.cs", que será uma representação da "Entidade Endereço do fornecedor" da regra de negócios.
+5) Antes de utilizar o "Scaffold", comente os campos que você sbe que ele possa dar problema, bilde a solução e faça uma cópia de segurança.
 
 
 
