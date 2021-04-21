@@ -4,7 +4,7 @@ using System.Linq;
 namespace DevIO.Business.Core.Notifications
 {
     // Esta classe implementa a interface de notificações
-    class Notificador : INotificador
+    public class Notificador : INotificador
     {
         // Cria uma lista privada que irá armazenar as notificações
         private List<Notificacao> _notificacoes;

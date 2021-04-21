@@ -140,7 +140,13 @@ obs:
 3) Na pasta "ViewModels" crie uma classe chamada "FornecdorViewModel.cs", que será uma representação da "Entidade Fornecedor" da regra de negócios.
 4) Na pasta "ViewModels" crie uma classe chamada "EnderecoViewModel.cs", que será uma representação da "Entidade Endereço do fornecedor" da regra de negócios.
 5) Antes de utilizar o "Scaffold", comente os campos que você sbe que ele possa dar problema, bilde a solução e faça uma cópia de segurança.
-
+6) Clique com o botão direito do mouse na pasta "Controllers" em "DevIO.AppMVC", em seguida clique em adicionar em seguida, novo item com Scalffold...
+7) Escolha a opção "Controlador MV5 com modos de exibição usando o Entity Framework" em seguida clique em "Adicionar".
+8) Escolha a ViewModel que você está trabalhando como "Model Class", em seguida escolha para a "Data context class" a padrão, nunca escolha a que criamos, depois iremos 
+	alterar isto, já que a view model não irá conversar o o context. Flag as opções "Use async controller actions", "Generate views", "Reference script libraries" 
+	e "Use a layout page", mas não escolha nenhuma pagina para layout. Para a "Controler name", você vai utilizar o nome da sua controller sem o view e no plural exe: 
+	"ProdutosController".
+9) Abra o arquivo "IdentityModels.cs" que está em "DevIO.AppMVC" e remova a linha "public System.Data.Entity...." e o "using System.Data.Entity;" não vamos utilizar o entity para persistir informações no banco.
 
 
 __________________________________________________________________________________________________________________________________________________________________________
