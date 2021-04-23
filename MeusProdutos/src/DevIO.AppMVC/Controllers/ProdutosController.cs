@@ -35,6 +35,8 @@ namespace DevIO.AppMVC.Controllers
         }
 
         // GET:
+        [Route("Lista-De-Produtos")]
+        [HttpGet]
         public async Task<ActionResult> Index()
         {
             // Passa a lista de produtos para ser mapeada e entregue como uma coleção do viewModel
@@ -42,6 +44,8 @@ namespace DevIO.AppMVC.Controllers
         }
 
         // GET: Produtos/Details/5
+        [Route("Dados-Do-Produto/{id:guid}")]
+        [HttpGet]
         public async Task<ActionResult> Details(Guid id)
         {
             var produtoViewModel = await ObterProduto(id);
@@ -55,6 +59,8 @@ namespace DevIO.AppMVC.Controllers
         }
 
         // GET: Produtos/Create
+        [Route("Novo-Produto")]
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -63,6 +69,7 @@ namespace DevIO.AppMVC.Controllers
         // POST: Produtos/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("Novo-Produto")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(ProdutoViewModel produtoViewModel)
@@ -79,13 +86,11 @@ namespace DevIO.AppMVC.Controllers
         }
 
         // GET: Produtos/Edit/5
-        public async Task<ActionResult> Edit(Guid? id)
+        [Route("Editar-Produto/{id:guid}")]
+        [HttpGet]
+        public async Task<ActionResult> Edit(Guid id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ProdutoViewModel produtoViewModel = await db.ProdutoViewModels.FindAsync(id);
+            ProdutoViewModel produtoViewModel = await ObterProduto(id);
             if (produtoViewModel == null)
             {
                 return HttpNotFound();
@@ -96,27 +101,26 @@ namespace DevIO.AppMVC.Controllers
         // POST: Produtos/Edit/5
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("Editar-Produto/{id:guid}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,FornecedorId,Nome,Descricao,Imagem,Valor,DataCadastro,Ativo")] ProdutoViewModel produtoViewModel)
+        public async Task<ActionResult> Edit(ProdutoViewModel produtoViewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(produtoViewModel).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                await _produtoService.Atualizar(_mapper.Map<Produto>(produtoViewModel));
                 return RedirectToAction("Index");
             }
             return View(produtoViewModel);
         }
 
         // GET: Produtos/Delete/5
-        public async Task<ActionResult> Delete(Guid? id)
+        [Route("Excluir-Produto/{id:guid}")]
+        [HttpGet]
+        public async Task<ActionResult> Delete(Guid id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ProdutoViewModel produtoViewModel = await db.ProdutoViewModels.FindAsync(id);
+            var produtoViewModel = await ObterProduto(id);
+
             if (produtoViewModel == null)
             {
                 return HttpNotFound();
@@ -125,13 +129,20 @@ namespace DevIO.AppMVC.Controllers
         }
 
         // POST: Produtos/Delete/5
+        [Route("Excluir-Produto/{id:guid}")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            ProdutoViewModel produtoViewModel = await db.ProdutoViewModels.FindAsync(id);
-            db.ProdutoViewModels.Remove(produtoViewModel);
-            await db.SaveChangesAsync();
+            var produtoViewModel = await ObterProduto(id);
+
+            if (produtoViewModel == null)
+            {
+                return HttpNotFound();
+            }
+
+            await _produtoService.Remover(id);
+
             return RedirectToAction("Index");
         }
 
@@ -148,7 +159,8 @@ namespace DevIO.AppMVC.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _produtoRepository.Dispose();
+                _produtoService.Dispose();
             }
             base.Dispose(disposing);
         }
