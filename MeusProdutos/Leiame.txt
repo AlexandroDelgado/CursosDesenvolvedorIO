@@ -147,6 +147,11 @@ obs:
 	e "Use a layout page", mas não escolha nenhuma pagina para layout. Para a "Controler name", você vai utilizar o nome da sua controller sem o view e no plural exe: 
 	"ProdutosController".
 9) Abra o arquivo "IdentityModels.cs" que está em "DevIO.AppMVC" e remova a linha "public System.Data.Entity...." e o "using System.Data.Entity;" não vamos utilizar o entity para persistir informações no banco.
+10) Vá até o "Console do Gerenciador de Pacotes", escolha a camada de apresentação "DevIO.AppMVC" como projeto padrão e digite o comando 
+	"Install-Package AutoMapper -Version 10.1.1" e aperte enter, para que possamos instalar o AutoMapper.
+11) Na pasta "DevIO.AppMVC\App_Start" crie uma classe chamada "AutoMapperConfig".
+
+
 
 
 __________________________________________________________________________________________________________________________________________________________________________

@@ -13,6 +13,7 @@ using DevIO.Business.Models.Produtos;
 using DevIO.Business.Models.Produtos.Services;
 using DevIO.Infra.Data.Repository;
 using DevIO.Business.Core.Notifications;
+using AutoMapper;
 
 namespace DevIO.AppMVC.Controllers
 {
@@ -24,30 +25,32 @@ namespace DevIO.AppMVC.Controllers
         private readonly IProdutoRepository _produtoRepository;
         // Usaremos para fazermos o serviço de persistencia no banco
         private readonly IProdutoService _produtoService;
+        // Interface do tipo automapper
+        private readonly IMapper _mapper;
 
         // Construtor
         public ProdutosController()
         {
-            // Instânciamos os objetos
-            _produtoRepository = new ProdutoRepository();
-            _produtoService = new ProdutoService(_produtoRepository, new Notificador());
+            
         }
 
         // GET:
         public async Task<ActionResult> Index()
         {
-            return View(await _produtoRepository.ObterTodos());
+            // Passa a lista de produtos para ser mapeada e entregue como uma coleção do viewModel
+            return View(_mapper.Map<IEnumerable<ProdutoViewModel>>(await _produtoRepository.ObterTodos()));
         }
 
         // GET: Produtos/Details/5
         public async Task<ActionResult> Details(Guid id)
         {
-            var produtoViewModel = await _produtoRepository.ObterPorId(id);
+            var produtoViewModel = await ObterProduto(id);
             
             if (produtoViewModel == null)
             {
                 return HttpNotFound();
             }
+
             return View(produtoViewModel);
         }
 
@@ -66,7 +69,8 @@ namespace DevIO.AppMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                _produtoService.Adicionar(produtoViewModel);
+                // faz o mapeamento do produtoViewModel e já adiciona o mesmo
+                await _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
                 
                 return RedirectToAction("Index");
             }
@@ -129,6 +133,15 @@ namespace DevIO.AppMVC.Controllers
             db.ProdutoViewModels.Remove(produtoViewModel);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        // Método privado com base no Id, que obtem o produto para não ter que ficar fazendo sempre o mapeamento
+        private async Task<ProdutoViewModel> ObterProduto(Guid id)
+        {
+            // obtem os dados do produto e do fornecedor através do mapeamento
+            var produto = _mapper.Map<ProdutoViewModel>(await _produtoRepository.ObterProdutoFornecedor(id));
+
+            return produto;
         }
 
         protected override void Dispose(bool disposing)
