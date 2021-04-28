@@ -13,6 +13,9 @@ namespace DevIO.AppMVC
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Mapeia as rotas definidas por atributos para o aplicativo
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

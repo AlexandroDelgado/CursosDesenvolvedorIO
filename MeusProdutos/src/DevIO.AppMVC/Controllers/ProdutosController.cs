@@ -1,18 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DevIO.AppMVC.Models;
 using DevIO.AppMVC.ViewModels;
 using DevIO.Business.Models.Produtos;
 using DevIO.Business.Models.Produtos.Services;
-using DevIO.Infra.Data.Repository;
-using DevIO.Business.Core.Notifications;
 using AutoMapper;
 
 namespace DevIO.AppMVC.Controllers
@@ -28,10 +20,18 @@ namespace DevIO.AppMVC.Controllers
         // Interface do tipo automapper
         private readonly IMapper _mapper;
 
-        // Construtor
-        public ProdutosController()
+        // Construtor que está iniciando as instâncias da inversão de dependência.
+        // Já que o MVC5 não possui um container nativo de inversão de dependência, diferente do ASPCore,
+        //  então temos que fazer a instalação de controler de dependência.
+        // Controle de dependência: 
+        // https://www.nuget.org/packages/SimpleInjector.Integration.Web.Mvc
+        public ProdutosController(IProdutoRepository produtoRepository,
+                                  IProdutoService produtoService,
+                                  IMapper mapper)
         {
-            
+            _produtoRepository = produtoRepository;
+            _produtoService = produtoService;
+            _mapper = mapper;
         }
 
         // GET:

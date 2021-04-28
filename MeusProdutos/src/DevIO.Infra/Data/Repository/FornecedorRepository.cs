@@ -2,12 +2,16 @@
 using System;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using DevIO.Infra.Data.Context;
 
 namespace DevIO.Infra.Data.Repository
 {
     // Especializa um repositório genérico para uma classe especifica, além de implementar a interface para implementação de métodos que não estão previstos pelo repositório genérico.
     public class FornecedorRepository : Repository<Fornecedor>, IFornecedorRepository
     {
+        // Faz a injeção de dependência passando a mesma para a classe base sempre deverá criar a injeção de dependência na classe especializada, e não na classe base
+        public FornecedorRepository(MeuDbContext context) : base(context) { }
+
         // Método ascincrono que obtem o endereço de um fornedor
         public async Task<Fornecedor> ObterFornecedorEndereco(Guid id)
         {

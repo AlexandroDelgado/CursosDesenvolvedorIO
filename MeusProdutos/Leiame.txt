@@ -150,8 +150,13 @@ obs:
 10) Vá até o "Console do Gerenciador de Pacotes", escolha a camada de apresentação "DevIO.AppMVC" como projeto padrão e digite o comando 
 	"Install-Package AutoMapper -Version 10.1.1" e aperte enter, para que possamos instalar o AutoMapper.
 11) Na pasta "DevIO.AppMVC\App_Start" crie uma classe chamada "AutoMapperConfig".
-
-
+12) Vá até o "Console do Gerenciador de Pacotes", escolha a camada de apresentação "DevIO.AppMVC" como projeto padrão e digite o comando 
+	"Install-Package SimpleInjector.Integration.Web.Mvc -Version 5.0.0" e aperte enter, para que possamos instalar o SimpleInjector para fazer a injeção de dependência.
+13) Em "DevIO.AppMVC", vá até a pasta APP_Start e crie uma classe chamada "DependecyInjectionConfig.cs", que irá receber a configuração da injeção de dependência.
+14) Abra a classe "Startup.cs" no diretório raiz e dentro do método "Configuration" adicione a execução do método "DependecyInjectionConfig.RegisterDIContainer();".
+15) Abra o arquivo global.asax e recorte todas as inicializações, vá até o método "Configuration" no "Startup.cs" e cole todas as configurações no mesmo.
+16) Caso aconteça um erro, é falha da criação do visual studio. Vá até a pasta "Controllers", abra as classes: "ManageController.cs e AccountControlle.cs" e remova os dois
+		primeiros construtores de cada classe, salve e execute novamente a aplicação.
 
 
 __________________________________________________________________________________________________________________________________________________________________________

@@ -18,10 +18,10 @@ namespace DevIO.Infra.Data.Repository
         protected readonly DbSet<TEntity> DbSet;
 
         // Construtor protegido
-        protected Repository()
+        protected Repository(MeuDbContext db)
         {
             // Recebe uma nova instância do contexto geral
-            Db = new MeuDbContext();
+            Db = db;
 
             // Atalho para a entidade
             DbSet = Db.Set<TEntity>();
