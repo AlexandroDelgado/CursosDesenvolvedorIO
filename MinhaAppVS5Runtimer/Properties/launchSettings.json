@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "IIS Express": {
+    "Dev IISExpress": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
@@ -16,11 +16,11 @@
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
       }
     },
-    "MinhaAppVS5Runtimer": {
+    "Prod SelfHosting": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_ENVIRONMENT": "Production",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
       },
       "dotnetRunMessages": "true",

@@ -8,14 +8,14 @@
     }
   },
   "profiles": {
-    "IIS Express": {
+    "Dev IISExpress": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "MinhaAppVS": {
+    "Prod SelfHosting": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
