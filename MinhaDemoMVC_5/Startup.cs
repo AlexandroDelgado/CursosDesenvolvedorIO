@@ -48,16 +48,16 @@ namespace MinhaDemoMVC_5
 
             app.UseEndpoints(endpoints =>
             {
-                // Nova Rota
-                endpoints.MapControllerRoute(
-                    name: "Modulos",
-                    pattern: "Gestao/{controller=Home}/{action=Index}/{id?}"); // Adicionando um módulo "Gestão" na frente da rota.
+                //// Nova Rota
+                //endpoints.MapControllerRoute(
+                //    name: "Modulos",
+                //    pattern: "Gestao/{controller=Home}/{action=Index}/{id?}"); // Adicionando um módulo "Gestão" na frente da rota.
 
-                // Nova Rota
-                endpoints.MapControllerRoute(
-                    name: "Categoria",
-                    pattern: "Gestao/{controller=Home}/{action=Index}/{id}/{Categoria?}"); // Adicionando um novo parâmetro chamado "Categoria".
-                    // Caso o último item do pattern for ou não obrigatório, o penúltimo item deve ser obrigatório.
+                //// Nova Rota
+                //endpoints.MapControllerRoute(
+                //    name: "Categoria",
+                //    pattern: "Gestao/{controller=Home}/{action=Index}/{id}/{Categoria?}"); // Adicionando um novo parâmetro chamado "Categoria".
+                //    // Caso o último item do pattern for ou não obrigatório, o penúltimo item deve ser obrigatório.
 
                 // A rota padrão sempre deve ser a última especificada
                 endpoints.MapControllerRoute(

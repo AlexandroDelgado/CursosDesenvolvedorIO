@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace MinhaDemoMVC_2
 {
     public class Startup
@@ -55,16 +56,16 @@ namespace MinhaDemoMVC_2
 
             app.UseMvc(routes =>
             {
-                // Nova Rota
-                routes.MapRoute(
-                    name: "Modulos",
-                    template: "Gestao/{controller=Home}/{action=Index}/{id?}"); // Adicionando um módulo "Gestão" na frente da rota.
+                //// Nova Rota
+                //routes.MapRoute(
+                //    name: "Modulos",
+                //    template: "Gestao/{controller=Home}/{action=Index}/{id?}"); // Adicionando um módulo "Gestão" na frente da rota.
 
-                // Nova Rota
-                routes.MapRoute(
-                    name: "Categoria",
-                    template: "{controller=Home}/{action=Index}/{id}/{Categoria?}"); // Adicionando um novo parâmetro chamado "Categoria".
-                    // Caso o último item do pattern for ou não obrigatório, o penúltimo item deve ser obrigatório.
+                //// Nova Rota
+                //routes.MapRoute(
+                //    name: "Categoria",
+                //    template: "{controller=Home}/{action=Index}/{id}/{Categoria?}"); // Adicionando um novo parâmetro chamado "Categoria".
+                //    // Caso o último item do pattern for ou não obrigatório, o penúltimo item deve ser obrigatório.
 
                 // Rota padrão: sempre deve ser a última especificada e não deve ser alterada.
                 routes.MapRoute(
