@@ -46,6 +46,13 @@ namespace MinhaAppVSCode
 
             app.UseAuthorization();
 
+            // A ordem dos Middleware importa, cuidado com isso, adicione o mesmo antes da UserEndpoints(), ou seja sempre antes do Middleware MVC.
+            // Adiciona o Middleware Criado
+            //app.UseMiddleware<MeuMiddleware>();
+            
+            // Ficou uma chamada mais implicita, sendo uma boa prática.
+            app.UseMeuMiddleware();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
