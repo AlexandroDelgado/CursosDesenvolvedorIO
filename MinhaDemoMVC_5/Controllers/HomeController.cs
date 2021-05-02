@@ -20,20 +20,20 @@ namespace MinhaDemoMVC_5.Controllers
             _logger = logger;
         }
 
-        //[Route("")] // Rota amigavel
-        //[Route("Pagina-Inicial")] // Rota amigavel
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
         [Route("")] // Rota amigavel
         [Route("Pagina-Inicial")] // Rota amigavel
-        [Route("Pagina-Inicial/{id}/{categoria?}")] // Rota amigavel que recebe parametros
-        public IActionResult Index(string id, string categoria)
+        public IActionResult Index()
         {
             return View();
         }
+
+        //[Route("")] // Rota amigavel
+        //[Route("Pagina-Inicial")] // Rota amigavel
+        //[Route("Pagina-Inicial/{id}/{categoria?}")] // Rota amigavel que recebe parametros
+        //public IActionResult Index(string id, string categoria)
+        //{
+        //    return View();
+        //}
 
         [Route("Privacidade")] // Rota amigavel
         [Route("Politica-de-Privacidade")] // Rota amigavel

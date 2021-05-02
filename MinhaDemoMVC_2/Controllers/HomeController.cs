@@ -12,6 +12,8 @@ namespace MinhaDemoMVC_2.Controllers
     [Route("Site")] // Rota amigavel
     public class HomeController : Controller
     {
+        [Route("")] // Rota amigavel
+        [Route("Pagina-Inicial")] // Rota amigavel
         public IActionResult Index()
         {
             return View();
