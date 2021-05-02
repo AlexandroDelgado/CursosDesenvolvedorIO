@@ -12,26 +12,41 @@ namespace MinhaDemoMVC_2.Controllers
     [Route("Site")] // Rota amigavel
     public class HomeController : Controller
     {
-        //[Route("")] // Rota amigavel
-        //[Route("Pagina-Inicial")] // Rota amigavel
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        [Route("")] // Rota amigavel
-        [Route("Pagina-Inicial")] // Rota amigavel
-        [Route("Pagina-Inicial/{id}/{categoria?}")] // Rota amigavel que recebe parametros
-        public IActionResult Index(string id, string categoria)
+        public IActionResult Index()
         {
             return View();
         }
+
+        //[Route("")] // Rota amigavel
+        //[Route("Pagina-Inicial")] // Rota amigavel
+        //[Route("Pagina-Inicial/{id}/{categoria?}")] // Rota amigavel que recebe parametros
+        //public IActionResult Index(string id, string categoria)
+        //{
+        //    return View();
+        //}
 
         [Route("Privacidade")] // Rota amigavel
         [Route("Politica-de-Privacidade")] // Rota amigavel
         public IActionResult Privacy()
         {
             return View();
+
+            //// Teste de Action Result, retornando um script json.
+            //return Json("{'Nome':'Alexandro'}");
+
+            //// Teste de Action Result, retornando um arquivo txt.
+            //var fileBytes = System.IO.File.ReadAllBytes(@"c:\arquivo.txt"); // Pede para ler todos os bytes de um arquivo que está em "c:\", através da biblioteca System.IO.File.
+            //var fileName = "arquivo.txt"; // Seta o nome que será utilizado para download.
+            //return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName); // Retorna o arquivo para o browser através do "Return File"
+            //                                                                                    // o qual está recebendo uma coleção de bytes pelo "FileBytes,
+            //                                                                                    // informando qual será o tipo de dado a ser baixado através do
+            //                                                                                    // "MediaTypeNames.Application.Octet" neste caso será interpretado
+            //                                                                                    // como um octet-stream ou seja, uma transferência de arquivos, um download.
+            //                                                                                    // "fileName" o nome do arquivo que estou passando, que poderia ser qualquer
+            //                                                                                    // outro nome.
+
+            //// Teste de Action Result, retornando um texto
+            //return Content("Action Result");
         }
 
         [Route("Erro")] // Rota amigavel

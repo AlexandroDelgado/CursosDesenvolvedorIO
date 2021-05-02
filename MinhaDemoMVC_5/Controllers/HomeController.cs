@@ -40,6 +40,23 @@ namespace MinhaDemoMVC_5.Controllers
         public IActionResult Privacy()
         {
             return View();
+
+            //// Teste de Action Result, retornando um script json.
+            //return Json("{'Nome':'Alexandro'}");
+
+            //// Teste de Action Result, retornando um arquivo txt.
+            //var fileBytes = System.IO.File.ReadAllBytes(@"c:\arquivo.txt"); // Pede para ler todos os bytes de um arquivo que está em "c:\", através da biblioteca System.IO.File.
+            //var fileName = "arquivo.txt"; // Seta o nome que será utilizado para download.
+            //return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName); // Retorna o arquivo para o browser através do "Return File"
+            //                                                                                    // o qual está recebendo uma coleção de bytes pelo "FileBytes,
+            //                                                                                    // informando qual será o tipo de dado a ser baixado através do
+            //                                                                                    // "MediaTypeNames.Application.Octet" neste caso será interpretado
+            //                                                                                    // como um octet-stream ou seja, uma transferência de arquivos, um download.
+            //                                                                                    // "fileName" o nome do arquivo que estou passando, que poderia ser qualquer
+            //                                                                                    // outro nome.
+
+            //// Teste de Action Result, retornando um texto
+            //return Content("Action Result");
         }
 
         [Route("Erro")] // Rota amigavel
