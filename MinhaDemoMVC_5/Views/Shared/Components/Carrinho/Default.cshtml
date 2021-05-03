@@ -1,0 +1,7 @@
+﻿@* Declara uma model do tipo int que é passada pela chamada: "return View(ItensCarrinho);" na "ViewComponents\CarrinhoViewComponent.cs. *@
+@model int
+@* Exibe o conteúdo da model através do "@Model.ToString()".
+    @model com "m" minusculo, define o tipo da model.
+    @Model com "M" maiusculo, define o tipo de objeto que está model está referênciando.
+*@
+<span><img src="Images/Icon/Template/Carrinho de Compras.png" alt="some text" width=30 height=30></span><span class="text-body">&nbsp @Model.ToString()</span>
