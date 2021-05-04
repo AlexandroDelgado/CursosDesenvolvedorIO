@@ -23,7 +23,7 @@ namespace MinhaDemoMVC_2.Controllers.Filmes
             // Verifica se é uma entidade válida
             if (ModelState.IsValid)
             {
-                //
+                // ADICIONE UM PONTO DE INTERRUPÇÃO NA LINHA ACIMA PARA PODER TESTAR O MODELSTATE.ISVALID.
             }
 
             // Retorna a view de mesmo nome

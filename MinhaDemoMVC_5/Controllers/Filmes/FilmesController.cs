@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MinhaDemoMVC_5.Models;
 
-namespace MinhaDemoMVC_2.Controllers.Filmes
+namespace MinhaDemoMVC_5.Controllers.Filmes
 {
     public class FilmesController : Controller
     {
@@ -23,7 +23,7 @@ namespace MinhaDemoMVC_2.Controllers.Filmes
             // Verifica se é uma entidade válida
             if (ModelState.IsValid)
             {
-                //
+                // ADICIONE UM PONTO DE INTERRUPÇÃO NA LINHA ACIMA PARA PODER TESTAR O MODELSTATE.ISVALID.
             }
 
             // Retorna a view de mesmo nome
