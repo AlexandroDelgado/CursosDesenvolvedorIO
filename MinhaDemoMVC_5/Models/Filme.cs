@@ -37,7 +37,8 @@ namespace MinhaDemoMVC_5.Models
         public decimal Valor { get; set; }
 
         [Display(Name = "Avaliação:")] // Altera o nome do campo para exibição
-        [RegularExpression(@"^[0-5]*$", ErrorMessage = "Somente números!")] // Expressão regular que permite apenas números de 0 até 5
+        [Required(ErrorMessage = "O Campo Avaliação é obrigatório!")]  // Campo obrigatório
+        [RegularExpression(@"^[0-5]*$", ErrorMessage = "Somente números de 0 até 5!")] // Expressão regular que permite apenas números de 0 até 5
         public int Avaliacao { get; set; }
     }
 }
