@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using MinhaDemoMVC_2.Data;
 
 
 namespace MinhaDemoMVC_2
@@ -34,6 +36,9 @@ namespace MinhaDemoMVC_2
 
             // Adiciona o MVC e seta a versão de compatibilidade
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<MinhaDemoMVC_2Context>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MinhaDemoMVC_2Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

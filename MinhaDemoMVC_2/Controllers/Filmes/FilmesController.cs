@@ -16,7 +16,7 @@ namespace MinhaDemoMVC_2.Controllers.Filmes
 
         // Informa o verbo que entrega para o servidor
         [HttpPost]
-        [AutoValidateAntiforgeryTokenAttribute]
+        [ValidateAntiForgeryToken]
         // Método de controle
         public IActionResult Adicionar(Filme filme)
         {

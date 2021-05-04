@@ -16,9 +16,9 @@ namespace MinhaDemoMVC_5.Controllers.Filmes
 
         // Informa o verbo que entrega para o servidor
         [HttpPost]
-        [AutoValidateAntiforgeryTokenAttribute]
+        [ValidateAntiForgeryToken]
         // Método de controle
-        public IActionResult Adicionar(Filme filme)
+        public IActionResult Adicionar(FilmeScaffold filme)
         {
             // Verifica se é uma entidade válida
             if (ModelState.IsValid)

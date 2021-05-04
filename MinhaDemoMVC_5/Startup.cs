@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+ï»¿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using MinhaDemoMVC_5.Data;
 
 namespace MinhaDemoMVC_5
 {
@@ -24,6 +26,9 @@ namespace MinhaDemoMVC_5
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<MinhaDemoMVC_5Context>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MinhaDemoMVC_5Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,15 +56,15 @@ namespace MinhaDemoMVC_5
                 //// Nova Rota
                 //endpoints.MapControllerRoute(
                 //    name: "Modulos",
-                //    pattern: "Gestao/{controller=Home}/{action=Index}/{id?}"); // Adicionando um módulo "Gestão" na frente da rota.
+                //    pattern: "Gestao/{controller=Home}/{action=Index}/{id?}"); // Adicionando um mï¿½dulo "Gestï¿½o" na frente da rota.
 
                 //// Nova Rota
                 //endpoints.MapControllerRoute(
                 //    name: "Categoria",
-                //    pattern: "Gestao/{controller=Home}/{action=Index}/{id}/{Categoria?}"); // Adicionando um novo parâmetro chamado "Categoria".
-                //    // Caso o último item do pattern for ou não obrigatório, o penúltimo item deve ser obrigatório.
+                //    pattern: "Gestao/{controller=Home}/{action=Index}/{id}/{Categoria?}"); // Adicionando um novo parï¿½metro chamado "Categoria".
+                //    // Caso o ï¿½ltimo item do pattern for ou nï¿½o obrigatï¿½rio, o penï¿½ltimo item deve ser obrigatï¿½rio.
 
-                // A rota padrão sempre deve ser a última especificada
+                // A rota padrï¿½o sempre deve ser a ï¿½ltima especificada
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
