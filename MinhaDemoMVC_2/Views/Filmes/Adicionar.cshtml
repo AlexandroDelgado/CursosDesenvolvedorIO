@@ -1,0 +1,47 @@
+﻿@* Cria o modelo que será recebido *@
+@model MinhaDemoMVC_2.Models.Filme
+
+@* Bloco de código C# *@
+@{ 
+    // Cria o titulo da pagina
+    ViewData["Title"] = "Adiciona Novo Filme";
+}
+
+@* Adiciona o titulo ao Html da pagina *@
+<h1>@ViewData["Title"]</h1>
+
+@* Essa div possui o comportamento de linha através do "row" *@
+<div class="row">
+    @* Essa div utiliza o espaço de 4 colunas das 12 possiveis dentro do bootstrap *@
+    <div class="col-md-4">
+        @* Cria o formulário, e utililza a Tag Help do Razor para encaminhar a action para o controller de filmes *@
+        <form asp-action="Adicionar">
+            @* Cria um form-group especifico para cada item do formulário *@
+            <div class="form-group">
+                @* Utiliza a Tag Help do Razor para informar o nome do campo na tela, e customiza o css com o BootStrap. *@
+                <label asp-for="Titulo" class="control-label"></label>
+                @* Utiliza a Tag Help do Razor para criar o tipo de campo dentro do input, e a classe, utiliza o form-control do bootstrap para personalizar o campo. *@
+                <input asp-for="Titulo" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DataLancamento" class="control-label"></label>
+                <input asp-for="DataLancamento" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Genero" class="control-label"></label>
+                <input asp-for="Genero" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label"></label>
+                <input asp-for="Valor" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Avaliacao" class="control-label"></label>
+                <input asp-for="Avaliacao" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Adicionar" class="btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

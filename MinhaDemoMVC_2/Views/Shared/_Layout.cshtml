@@ -34,9 +34,13 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @* Cria o link para a controller Filme *@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Filmes" asp-action="Adicionar">Filme</a>
+                        </li>
                     </ul>
                 </div>
-                @* Adiciona o ViewComponent através da Tag Helper especifica chamada: "<vc:NomeDoComponente></vc:NomeDoComponente>"  *@
+                @* Adiciona o ViewComponent através da Tag Helper especifica chamada: "<vc:NomeDoComponente></vc:NomeDoComponente>" *@
                 <vc:Carrinho></vc:Carrinho>
             </div>
         </nav>
