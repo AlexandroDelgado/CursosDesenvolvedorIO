@@ -31,6 +31,8 @@ namespace DevIO.UI.Site
                 app.UseDeveloperExceptionPage(); // Utiliza o ambiente de desenvolvimento
             }
 
+            app.UseStaticFiles(); // Solicita que seja feita a entrega dos arquivos staticos(js, css...) para o browser.
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints => // Define o sistema de rotas (procure não utilizar)

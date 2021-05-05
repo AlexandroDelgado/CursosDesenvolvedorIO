@@ -30,6 +30,8 @@ namespace DevIO.UI.Site
                 app.UseDeveloperExceptionPage(); // Utiliza o ambiente de desenvolvimento
             }
 
+            app.UseStaticFiles(); // Solicita que seja feita a entrega dos arquivos staticos(js, css...) para o browser.
+
             // Código substituido pelo comando MVC, app.UseMVC
             //app.Run(async (context) => // Roda o contexto de forma assincrona
             //{
