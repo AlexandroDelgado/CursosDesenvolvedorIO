@@ -3,79 +3,51 @@
   "defaultProvider": "cdnjs",
   "libraries": [
     {
-      "library": "jquery@3.6.0",
+      "library": "jquery@3.3.1",
       "destination": "wwwroot/lib/jquery/",
       "files": [
-        "jquery.js"
+        "jquery.js",
+        "core.js"
       ]
     },
     {
-      "library": "core-js@3.11.0",
-      "destination": "wwwroot/lib/core-js/"
-    },
-    {
-      "library": "jquery-validate@1.19.2",
+      "library": "jquery-validate@1.19.0",
       "destination": "wwwroot/lib/jquery-validate/",
       "files": [
-        "additional-methods.js",
         "jquery.validate.js",
-        "localization/messages_pt_BR.js"
+        "localization/methods_pt.js",
+        "additional-methods.js"
       ]
     },
     {
-      "library": "jquery-validation-unobtrusive@3.2.12",
+      "library": "jquery-validation-unobtrusive@3.2.11",
       "destination": "wwwroot/lib/jquery-validation-unobtrusive/",
       "files": [
         "jquery.validate.unobtrusive.js"
       ]
     },
     {
-      "library": "twitter-bootstrap@4.6.0",
+      "library": "twitter-bootstrap@4.2.1",
       "destination": "wwwroot/lib/bootstrap/",
       "files": [
         "js/bootstrap.js",
-        "css/bootstrap-grid.css",
+        "css/bootstrap.css",
         "css/bootstrap-reboot.css",
-        "css/bootstrap.css"
+        "css/bootstrap-grid.css"
       ]
     },
     {
-      "library": "font-awesome@5.15.3",
+      "provider": "cdnjs",
+      "library": "font-awesome@4.7.0",
       "destination": "wwwroot/lib/font-awesome/",
       "files": [
-        "css/fontawesome.css",
-        "js/all.js",
-        "js/all.min.js",
-        "js/brands.js",
-        "js/brands.min.js",
-        "js/conflict-detection.js",
-        "js/conflict-detection.min.js",
-        "js/fontawesome.js",
-        "js/fontawesome.min.js",
-        "js/regular.js",
-        "js/regular.min.js",
-        "js/solid.js",
-        "js/solid.min.js",
-        "js/v4-shims.js",
-        "js/v4-shims.min.js",
-        "sprites/brands.svg",
-        "sprites/regular.svg",
-        "sprites/solid.svg",
-        "webfonts/fa-brands-400.eot",
-        "webfonts/fa-brands-400.svg",
-        "webfonts/fa-brands-400.ttf",
-        "webfonts/fa-brands-400.woff",
-        "webfonts/fa-brands-400.woff2",
-        "webfonts/fa-regular-400.eot",
-        "webfonts/fa-regular-400.svg",
-        "webfonts/fa-regular-400.ttf",
-        "webfonts/fa-regular-400.woff",
-        "webfonts/fa-regular-400.woff2",
-        "webfonts/fa-solid-900.eot",
-        "webfonts/fa-solid-900.svg",
-        "webfonts/fa-solid-900.ttf",
-        "webfonts/fa-solid-900.woff",
-        "webfonts/fa-solid-900.woff2"
+        "css/font-awesome.css",
+        "fonts/fontawesome-webfont.eot",
+        "fonts/fontawesome-webfont.svg",
+        "fonts/fontawesome-webfont.ttf",
+        "fonts/fontawesome-webfont.woff",
+        "fonts/fontawesome-webfont.woff2",
+        "fonts/FontAwesome.otf"
       ]
     }
   ]
