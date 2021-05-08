@@ -42,8 +42,5 @@ namespace DevIO.UI.Site.Extensions
             //_accessor.HttpContext?.Request?.GetDisplayUrl();
             //Request.Headers["Referer"].ToString();
         }
-
-
     }
-
 }
