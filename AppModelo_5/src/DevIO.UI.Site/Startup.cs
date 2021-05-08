@@ -42,6 +42,9 @@ namespace DevIO.UI.Site
                 //    await context.Response.WriteAsync("Hello World!"); // Mandando gravar na tela a string.
                 //});
 
+                // Rotas das Áreas - (:exists = só rotea a área, quando ela realmente existir)
+                endpoints.MapControllerRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 // Define uma rota padrão
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });

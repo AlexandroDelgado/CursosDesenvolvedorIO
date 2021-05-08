@@ -42,6 +42,9 @@ namespace DevIO.UI.Site
             app.UseMvc(routes =>
             {
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+
+                // Rotas das Áreas - (:exists = só rotea a área, quando ela realmente existir)
+                routes.MapRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
