@@ -7,6 +7,8 @@
   <ItemGroup>
     <Folder Include="Areas\Produtos\Data\" />
     <Folder Include="Areas\Produtos\Models\" />
+    <Folder Include="Areas\Vendas\Data\" />
+    <Folder Include="Areas\Vendas\Models\" />
     <Folder Include="Models\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\js\" /> <!--MVC - Modelos--> <!--MVC - Controles--> <!--MVC - Exibição-->

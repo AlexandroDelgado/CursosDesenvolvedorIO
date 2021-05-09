@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -18,6 +19,18 @@ namespace DevIO.UI.Site
         // Para obter mais informações sobre como configurar seu aplicativo, visite https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // Liberar para quando for subir para a produção e alterar o nome da pasta no "Gerenciador de Soluções" de "Areas" para "Modulos".
+
+            //// Limpa a convenção e aplica uma nova convenção de forma global para a area,
+            ////  devido a alteração do nome de "Areas" para "Modulos".
+            //services.Configure<RazorViewEngineOptions>(options =>
+            //{
+            //    options.AreaViewLocationFormats.Clear();
+            //    options.AreaViewLocationFormats.Add("/Modulos/{2}/Views/{1}/{0}.cshtml");
+            //    options.AreaViewLocationFormats.Add("/Modulos/{2}/Views/Shared/{0}.cshtml");
+            //    options.AreaViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
+            //});
+
             services.AddMvc() // Adiciona o serviço MVC
             .SetCompatibilityVersion(CompatibilityVersion.Latest); // Seta a compatibilidade da versão mais recente (recomendado pela microsoft)
         }
@@ -42,8 +55,12 @@ namespace DevIO.UI.Site
                 //    await context.Response.WriteAsync("Hello World!"); // Mandando gravar na tela a string.
                 //});
 
-                // Rotas das Áreas - (:exists = só rotea a área, quando ela realmente existir)
+                // Rotas das Áreas - (:exists = só roteia a área, quando ela realmente existir e requer uma Home em cada área para navegação via url).
                 endpoints.MapControllerRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                //// Cria uma rota para cada área, não necessitando a criação de uma Home.
+                //endpoints.MapAreaControllerRoute(name: "AreaProdutos", areaName: "Produtos", "Produtos/{controller=Cadastro}/{action=Index}/{id?}");
+                //endpoints.MapAreaControllerRoute(name: "AreaVendas", areaName: "Vendas", "Vendas/{controller=Pedidos}/{action=Index}/{id?}");
 
                 // Define uma rota padrão
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
