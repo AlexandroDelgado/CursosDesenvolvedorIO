@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using DevIO.UI.Site.Data;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,9 @@ namespace DevIO.UI.Site
 
             services.AddMvc() // Adiciona o serviço MVC
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2); // Seta a compatibilidade da versão
+
+            // Resolução de dependeência para a class PedidoRepository (Através da interface IPedidoRepository, resolvemos e temos a instâna de PedidoRepository).
+            services.AddTransient<IPedidoRepository, PedidoRepository>(); // É necessário sempre ter uma classe que interprete a intervace da classe que estamos declarando.
         }
 
         // Este método é chamado pelo tempo de execução. Use este método para configurar o pipeline de solicitação HTTP.
