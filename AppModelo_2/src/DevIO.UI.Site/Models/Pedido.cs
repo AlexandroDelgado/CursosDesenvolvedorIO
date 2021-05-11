@@ -11,7 +11,7 @@ namespace DevIO.UI.Site.Models
         // Propriedade da classe
         public Guid Id { get; set; }
 
-        // Método Pedidio
+        // Construtor do Método Pedidio
         public Pedido()
         {
             // Gera um novo id randomico
