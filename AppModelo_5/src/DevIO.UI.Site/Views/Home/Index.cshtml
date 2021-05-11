@@ -1,1 +1,9 @@
-﻿Olá!
+﻿@*Referência o assembly.*@
+@using DevIO.UI.Site.Data;
+
+@*Utiliza a palavra reservada para dizer o tipo e dizer, qual o nome.*@
+@inject IPedidoRepository PedidoRepository
+Ola!
+
+@*Informa o valor da propriedade do método.*@
+@PedidoRepository.ObterPedido().Id
