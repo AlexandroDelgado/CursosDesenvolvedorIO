@@ -37,6 +37,12 @@ namespace DevIO.UI.Site
 
             // Resolução de dependeência para a class PedidoRepository (Através da interface IPedidoRepository, resolvemos e temos a instâna de PedidoRepository).
             services.AddTransient<IPedidoRepository, PedidoRepository>(); // É necessário sempre ter uma classe que interprete a intervace da classe que estamos declarando.
+
+            // 
+            services.AddTransient<IOperacaoTransient, Operacao>();
+            services.AddScoped<IOperacaoScoped, Operacao>();
+            services.AddSingleton<IOperacaoSingleton, Operacao>();
+            services.AddSingleton<IOperacaoSingletonInstance>(new Operacao(Guid.Empty));
         }
 
         // Este método é chamado pelo tempo de execução. Use este método para configurar o pipeline de solicitação HTTP.
