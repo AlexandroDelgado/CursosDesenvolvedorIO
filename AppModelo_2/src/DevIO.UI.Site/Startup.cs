@@ -1,4 +1,5 @@
 ﻿using DevIO.UI.Site.Data;
+using DevIO.UI.Site.Servicos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -36,6 +37,17 @@ namespace DevIO.UI.Site
 
             // Resolução de dependeência para a class PedidoRepository (Através da interface IPedidoRepository, resolvemos e temos a instâna de PedidoRepository).
             services.AddTransient<IPedidoRepository, PedidoRepository>(); // É necessário sempre ter uma classe que interprete a intervace da classe que estamos declarando.
+
+            // Declaração das injeções de dependência dos "Tipos de Ciclos de Vida" de cada uma.
+            services.AddTransient<IOperacaoTransient, Operacao>(); // A instância é criada ao setar a operação
+            services.AddScoped<IOperacaoScoped, Operacao>(); // A instância é criada ao setar a operação
+            services.AddSingleton<IOperacaoSingleton, Operacao>(); // A instância é criada ao setar a operação
+            services.AddSingleton<IOperacaoSingletonInstance>(new Operacao(Guid.Empty));  // Já recebe uma instância pronta com o Id zerado que dura durante toda a aplicação, 
+                                                                                          //    já que a aplicação já sobe com esse dado na memória do servidor de forma
+                                                                                          //    alocada, sem a necessidade de uma pessoa chamar a aplicação para gerar uma
+                                                                                          //    alocação, ao contrário, o mesmo já irá vir alocado.
+
+            services.AddTransient<OperacaoService>(); // A instância é criada ao setar a operação
         }
 
         // Este método é chamado pelo tempo de execução. Use este método para configurar o pipeline de solicitação HTTP.
