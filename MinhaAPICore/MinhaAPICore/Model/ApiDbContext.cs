@@ -10,7 +10,7 @@ namespace MinhaAPICore.Model
 
         }
 
-        // 
+        // Cria um contexto de fornecedores
         public DbSet<Fornecedor> Fornecedores { get; set; }
     }
 }
