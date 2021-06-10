@@ -40,6 +40,13 @@ namespace DevIO.Api
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            // Configurando os serviços automáticos
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                // Desativa a validação automática da API
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
             // Resolve os problemas de dependência
             services.ResolveDependencies();
         }

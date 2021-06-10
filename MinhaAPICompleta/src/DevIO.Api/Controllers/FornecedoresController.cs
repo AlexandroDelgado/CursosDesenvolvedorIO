@@ -36,7 +36,7 @@ namespace DevIO.Api.Controllers
             return Ok(fornecedor); // 
         }
 
-        [HttpGet("{id:guid")] // Criando a rota (Verbo) para o fornecedor por id.
+        [HttpGet("{id:guid}")] // Criando a rota (Verbo) para o fornecedor por id.
         // Retorna o fornecedor por Id
         public async Task<ActionResult<FornecedorViewModel>> ObterPorId(Guid id)
         {
@@ -58,19 +58,19 @@ namespace DevIO.Api.Controllers
             return _mapper.Map<FornecedorViewModel>(await _fornecedorRepository.ObterFornecedorProdutosEndereco(id));
         }
 
-        [HttpGet("{id:guid")] // Criando a rota (Verbo) para o fornecedor por id.
-        // Retornando o fornecedor po Id
-        public async Task<ActionResult<FornecedorViewModel>> ObterPorIdEncapsulado(Guid id)
-        {
-            // Obtem os dados do fornedor através do encapsulamento no método "ObterFornecedorProdutosEndereco".
-            var fornecedor = await ObterFornecedorProdutosEndereco(id);
+        //[HttpGet("{id:guid}")] // Criando a rota (Verbo) para o fornecedor por id.
+        //// Retornando o fornecedor po Id
+        //public async Task<ActionResult<FornecedorViewModel>> ObterPorIdEncapsulado(Guid id)
+        //{
+        //    // Obtem os dados do fornedor através do encapsulamento no método "ObterFornecedorProdutosEndereco".
+        //    var fornecedor = await ObterFornecedorProdutosEndereco(id);
 
-            // Verifica se o fornecedor foi preenchido
-            if (fornecedor == null) return NotFound(); // Não encontrado
+        //    // Verifica se o fornecedor foi preenchido
+        //    if (fornecedor == null) return NotFound(); // Não encontrado
 
-            // retorna o fornecedor
-            return Ok(fornecedor);
-        }
+        //    // retorna o fornecedor
+        //    return Ok(fornecedor);
+        //}
 
         [HttpPost]
         public async Task<ActionResult<FornecedorViewModel>> Adicionar(FornecedorViewModel fornecedorViewModel)
@@ -121,7 +121,7 @@ namespace DevIO.Api.Controllers
             var fornecedor = await ObterFornecedorEndereco(id);
 
             // Verifica se o fornecedor foi encontrado
-            if (!ModelState.IsValid) return NotFound(); // Não encontrado
+            if (fornecedor == null) return NotFound(); // Erro 404 - Não encontrado
 
             // Remove o fornecedor.
             var result = await _fornecedorService.Remover(id);
@@ -129,8 +129,9 @@ namespace DevIO.Api.Controllers
             // Verifica se ocorreu algum erro com a remoção do fornecedor através dos serviços da camada de negócio.
             if (!result) return BadRequest();
 
-            // retorna
-            return Ok(fornecedor);
+            // retorna o fornecedor
+            return Ok(fornecedor); // Não retornar o fornecedor, para não ter que fazer as checagens novamente
+            //return Ok(); // 200 OK
         }
 
         // Encapsulando os dados do fornecedor dentro de um método
